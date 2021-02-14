@@ -4,23 +4,52 @@ const api = {
     base: "https://api.openweathermap.org/data/2.5/",
 };
 
-
-
 function App() {
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState({});
+    let isDay;
+
 
     const search = evt => {
         if(evt.key === "Enter"){
+            
+            // fetch weather data
             fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
                 setWeather(result);
                 setQuery('');
-                console.log(result);
+                // console.log(result);
+            });
+
+            // fetch forecast data
+            fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
+            .then(res => res.json())
+            .then(result => {
+                setQuery('');
+                // console.log(result);
+                
+                let d = new Date();
+                let n = d.getUTCHours();
+                let timezone = result.city.timezone/3600
+                let currentTime = n + timezone;
+                let sunrise = new Date(result.city.sunrise * 1000);
+                let sunriseUtc = sunrise.getUTCHours() + timezone;
+                
+                let sunset = new Date(result.city.sunset * 1000);
+                let sunsetUtc = sunset.getUTCHours() + timezone;
+
+                console.log(currentTime, sunriseUtc, sunsetUtc)
+
+                if(currentTime >= sunriseUtc && currentTime <= sunsetUtc){
+                    isDay = true;
+                } else {
+                    isDay = false;
+                }
             });
         }
     }
+
 
     const dateBuilder = (d) =>{
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -35,11 +64,7 @@ function App() {
     }
 
     return (
-        <div className={(typeof weather.main != "undefined")
-         ? ((weather.main.temp > 16)
-          ? 'app warm'
-           : 'app')
-            : 'app'}>
+        <div className='app'>
                 
             <main>
                 <div className="search-box">
@@ -69,7 +94,19 @@ function App() {
                                 {weather.weather[0].main}
                             </div>
                         </div>
+                        
+                        {/* <div>
+                            <div className="forecast-box">
+                                <div className="temp">
+                                    {Math.round(weather.main.temp)}°C
+                                </div>
+                                <div className="weather">
+                                    {weather.weather[0].main}
+                                </div>
+                            </div>
+                        </div> */}
                     </div>
+                    
                 ) : ('')};
                 
             </main>

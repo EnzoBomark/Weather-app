@@ -9,14 +9,18 @@ body{
 }
 
 .app{
-  background-image: url(./images/moon.jpg);
+  background-color: white;
   background-size: cover;
   background-position: bottom;
   transition: 0.4s ease-out;
 }
 
-.app.warm{
+.app.day{
   background-image: url(./images/sun.jpg);
+}
+
+.app.night{
+  background-image: url(./images/moon.jpg);
 }
 
 main{
