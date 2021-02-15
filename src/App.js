@@ -7,7 +7,7 @@ const api = {
 function App() {
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState({});
-    let isDay;
+    const [time, setTime] = useState({});
 
 
     const search = evt => {
@@ -27,29 +27,31 @@ function App() {
             .then(res => res.json())
             .then(result => {
                 setQuery('');
+                setTime(result);
                 // console.log(result);
-                
-                let d = new Date();
-                let n = d.getUTCHours();
-                let timezone = result.city.timezone/3600
-                let currentTime = n + timezone;
-                let sunrise = new Date(result.city.sunrise * 1000);
-                let sunriseUtc = sunrise.getUTCHours() + timezone;
-                
-                let sunset = new Date(result.city.sunset * 1000);
-                let sunsetUtc = sunset.getUTCHours() + timezone;
-
-                console.log(currentTime, sunriseUtc, sunsetUtc)
-
-                if(currentTime >= sunriseUtc && currentTime <= sunsetUtc){
-                    isDay = true;
-                } else {
-                    isDay = false;
-                }
             });
         }
     }
 
+    const newCurrentTime = (result) => {
+        let d = new Date();
+        let n = d.getUTCHours();
+        let timezone = result.city.timezone/3600
+        let currentTime = n + timezone;
+        let sunrise = new Date(result.city.sunrise * 1000);
+        let sunriseUtc = sunrise.getUTCHours() + timezone;
+        
+        let sunset = new Date(result.city.sunset * 1000);
+        let sunsetUtc = sunset.getUTCHours() + timezone;
+
+        if(currentTime >= sunriseUtc && currentTime <= sunsetUtc){
+            return true
+        } else {
+            return false
+        }
+    }
+
+// ${(newCurrentTime(time)) ? 'day' : 'night'}
 
     const dateBuilder = (d) =>{
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -64,7 +66,9 @@ function App() {
     }
 
     return (
-        <div className='app'>
+        <div className={(typeof weather.main != "undefined") ? ((newCurrentTime(time)) ? 'app day': 'app night'): 'app'}>
+
+           
                 
             <main>
                 <div className="search-box">
@@ -94,24 +98,13 @@ function App() {
                                 {weather.weather[0].main}
                             </div>
                         </div>
-                        
-                        {/* <div>
-                            <div className="forecast-box">
-                                <div className="temp">
-                                    {Math.round(weather.main.temp)}°C
-                                </div>
-                                <div className="weather">
-                                    {weather.weather[0].main}
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                     
-                ) : ('')};
+                ) : ('')}
                 
             </main>
         </div>
-    );
+    )
 }
 
 export default App;
