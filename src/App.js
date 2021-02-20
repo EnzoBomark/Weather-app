@@ -28,21 +28,23 @@ function App() {
                 setQuery('');
                 let forecastDay = [];
 
-                for(let i = 0; i < result.list.length; i+=8){
-                    const forecastDate = (result.list[i].dt_txt).split(" ")[0];
-                    const forecastType = result.list[i].weather[0].main;
-                    const forecastMax = result.list[i].main.temp_max;
-                    const forecastMin = result.list[i].main.temp_min;
+                if(result.cod == 200){
+                    for(let i = 0; i < result.list.length; i+=8){
+                        const forecastDate = (result.list[i].dt_txt).split(" ")[0];
+                        const forecastType = result.list[i].weather[0].main;
+                        const forecastMax = Math.ceil(result.list[i].main.temp_max);
+                        const forecastMin = result.list[i].main.temp_min;
+    
+                        forecastDay.push({
+                            date: forecastDate, 
+                            type: forecastType, 
+                            max: forecastMax, 
+                            min: forecastMin
+                        });
+                    }
 
-                    forecastDay.push({
-                        date: forecastDate, 
-                        type: forecastType, 
-                        max: forecastMax, 
-                        min: forecastMin
-                    });
+                    setForecast(forecastDay);
                 }
-
-                setForecast(forecastDay);
             });
         }
     }
@@ -95,75 +97,69 @@ function App() {
                         </div>
 
                         <div className="weather-box">
-                            <div className={weather.weather[0].main}></div>
-                            <div className="temp">
-                                {Math.round(weather.main.temp)}°C
+                            <div className="container">
+                                <div className={weather.weather[0].main}></div>
+                                <div className="temp">
+                                    {Math.round(weather.main.temp)}°C
+                                </div>
+                                <div className="weather">
+                                    {weather.weather[0].main}
+                                </div>
+                                <div className="date">{dateBuilder(new Date())}</div>
                             </div>
-                            <div className="weather">
-                                {weather.weather[0].main}
-                            </div>
-                            <div className="date">{dateBuilder(new Date())}</div>
                         </div>
                                 {(typeof forecast[0] != 'undefined') ? (
                                     <div>
                                         <div className="forecast">
                                             <div className="day">
-                                                <div>
-                                                {forecast[0].date} 
+                                                <div className='date'>
+                                                {forecast[1].date} 
                                                 </div>
+                                                <div className={forecast[1].type}></div>
                                                 <div>
-                                                {forecast[0].type} 
+                                                {forecast[1].type} 
                                                 </div>
-                                                <div>
-                                                {forecast[0].max} {forecast[0].min}
+                                                <div className='temp'>
+                                                {forecast[1].max}°C
                                                 </div>      
                                             </div>
 
                                             <div className="day">
-                                                <div>
-                                                {forecast[0].date} 
+                                                <div className='date'>
+                                                {forecast[2].date} 
                                                 </div>
+                                                <div className={forecast[2].type}></div>
                                                 <div>
-                                                {forecast[0].type} 
+                                                {forecast[2].type} 
                                                 </div>
-                                                <div>
-                                                {forecast[0].max} {forecast[0].min}
+                                                <div className='temp'>
+                                                {forecast[2].max}°C
                                                 </div>      
                                             </div>
 
                                             <div className="day">
-                                                <div>
-                                                {forecast[0].date} 
+                                                <div className='date'>
+                                                {forecast[3].date} 
                                                 </div>
+                                                <div className={forecast[3].type}></div>
                                                 <div>
-                                                {forecast[0].type} 
+                                                {forecast[3].type} 
                                                 </div>
-                                                <div>
-                                                {forecast[0].max} {forecast[0].min}
+                                                <div className='temp'>
+                                                {forecast[3].max}°C
                                                 </div>      
                                             </div>
 
                                             <div className="day">
-                                                <div>
-                                                {forecast[0].date} 
+                                                <div className='date'>
+                                                {forecast[4].date} 
                                                 </div>
+                                                <div className={forecast[4].type}></div>
                                                 <div>
-                                                {forecast[0].type} 
+                                                {forecast[4].type} 
                                                 </div>
-                                                <div>
-                                                {forecast[0].max} {forecast[0].min}
-                                                </div>      
-                                            </div>
-
-                                            <div className="day">
-                                                <div>
-                                                {forecast[0].date} 
-                                                </div>
-                                                <div>
-                                                {forecast[0].type} 
-                                                </div>
-                                                <div>
-                                                {forecast[0].max} {forecast[0].min}
+                                                <div className='temp'>
+                                                {forecast[4].max}°C
                                                 </div>      
                                             </div>
                                         </div>

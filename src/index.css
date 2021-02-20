@@ -19,22 +19,26 @@ body {
 }
 
 .app.day {
-  background-color: #EBF6FF;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(17, 41, 255, 0.37)));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(17, 41, 255, 0.37) 100%);
+  background-color: #a9c9ff;
 }
 
 .app.day .search-box {
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  border-radius: 20px;
   margin-bottom: 75px;
   text-align: center;
-  width: 100%;
 }
 
 .app.day .search-box .search-bar {
-  text-align: center;
-  width: 100%;
   display: block;
-  padding: 15px;
+  padding: 15px 20px;
   font-size: 32px;
-  color: #0B1A26;
+  color: #070F1D;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -45,88 +49,127 @@ body {
 }
 
 .app.day .search-box .search-bar::-webkit-input-placeholder {
-  color: #0B1A26;
+  color: #070F1D;
 }
 
 .app.day .search-box .search-bar:-ms-input-placeholder {
-  color: #0B1A26;
+  color: #070F1D;
 }
 
 .app.day .search-box .search-bar::-ms-input-placeholder {
-  color: #0B1A26;
+  color: #070F1D;
 }
 
 .app.day .search-box .search-bar::placeholder {
-  color: #0B1A26;
+  color: #070F1D;
 }
 
-.app.day .location-box .location {
-  color: #0B1A26;
-  font-size: 32px;
-  text-align: center;
-}
-
-.app.day .location-box .date {
-  color: #0B1A26;
-  font-size: 32px;
-  text-align: center;
-}
-
-.app.day .weather-box {
-  margin-top: 100px;
+.app.day .location-box {
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.app.day .location-box .location {
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  color: #070F1D;
+  font-size: 32px;
+  text-align: center;
+}
+
+.app.day .weather-box {
+  width: 100vw;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 
-.app.day .weather-box .Clouds {
+.app.day .weather-box .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  border-radius: 20px;
+  padding: 90px 70px;
+}
+
+.app.day .weather-box .container .date {
+  color: #070F1D;
+  text-align: center;
+}
+
+.app.day .weather-box .container .Clouds {
   background-image: url("../src/images/cloud.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.day .weather-box .Rain {
+.app.day .weather-box .container .Rain {
   background-image: url("../src/images/rain.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.day .weather-box .Clear {
+.app.day .weather-box .container .Clear {
   background-image: url("../src/images/sun.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.day .weather-box .Snow {
+.app.day .weather-box .container .Snow {
   background-image: url("../src/images/snow.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.day .weather-box .temp {
-  color: #0B1A26;
+.app.day .weather-box .container .temp {
+  color: #070F1D;
   font-size: 72px;
   text-align: center;
 }
 
-.app.day .weather-box .weather {
-  color: #0B1A26;
+.app.day .weather-box .container .weather {
+  color: #070F1D;
   font-size: 52px;
   text-align: center;
 }
 
 .app.day .forecast {
-  margin-top: 30px;
+  margin-top: 70px;
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -139,26 +182,83 @@ body {
 }
 
 .app.day .forecast .day {
-  background-color: white;
-  padding: 50px 30px;
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  padding: 90px 50px;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app.day .forecast .day div {
+  color: #070F1D;
+}
+
+.app.day .forecast .day .date {
+  font-size: 32px;
+}
+
+.app.day .forecast .day .temp {
+  margin-top: 10px;
+  font-size: 32px;
+}
+
+.app.day .forecast .day .Clouds {
+  background-image: url("../src/images/cloud.svg");
+  width: 100px;
+  height: 100px;
+}
+
+.app.day .forecast .day .Rain {
+  background-image: url("../src/images/rain.svg");
+  width: 100px;
+  height: 100px;
+}
+
+.app.day .forecast .day .Clear {
+  background-image: url("../src/images/sun.svg");
+  width: 100px;
+  height: 100px;
+}
+
+.app.day .forecast .day .Snow {
+  background-image: url("../src/images/snow.svg");
+  width: 100px;
+  height: 100px;
 }
 
 .app.night {
-  background-color: #0B1A26;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(17, 41, 255, 0.37)));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(17, 41, 255, 0.37) 100%);
+  background-color: #070f1d;
 }
 
 .app.night .search-box {
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  border-radius: 20px;
   margin-bottom: 75px;
   text-align: center;
-  width: 100%;
 }
 
 .app.night .search-box .search-bar {
-  text-align: center;
-  width: 100%;
   display: block;
-  padding: 15px;
+  padding: 15px 20px;
   font-size: 32px;
   color: #ffffff;
   -webkit-appearance: none;
@@ -186,73 +286,112 @@ body {
   color: #ffffff;
 }
 
-.app.night .location-box .location {
-  color: #ffffff;
-  font-size: 32px;
-  text-align: center;
-}
-
-.app.night .location-box .date {
-  color: #ffffff;
-  font-size: 32px;
-  text-align: center;
-}
-
-.app.night .weather-box {
-  margin-top: 100px;
+.app.night .location-box {
+  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.app.night .location-box .location {
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 32px;
+  text-align: center;
+}
+
+.app.night .weather-box {
+  width: 100vw;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 
-.app.night .weather-box .Clouds {
+.app.night .weather-box .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  border-radius: 20px;
+  padding: 90px 70px;
+}
+
+.app.night .weather-box .container .date {
+  color: #ffffff;
+  text-align: center;
+}
+
+.app.night .weather-box .container .Clouds {
   background-image: url("../src/images/night-cloud.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.night .weather-box .Rain {
+.app.night .weather-box .container .Rain {
   background-image: url("../src/images/night-rain.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.night .weather-box .Clear {
+.app.night .weather-box .container .Clear {
   background-image: url("../src/images/night-moon.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.night .weather-box .Snow {
+.app.night .weather-box .container .Snow {
   background-image: url("../src/images/night-snow.svg");
   width: 155px;
   height: 155px;
 }
 
-.app.night .weather-box .temp {
+.app.night .weather-box .container .temp {
   color: #ffffff;
   font-size: 72px;
   text-align: center;
 }
 
-.app.night .weather-box .weather {
+.app.night .weather-box .container .weather {
   color: #ffffff;
   font-size: 52px;
   text-align: center;
 }
 
 .app.night .forecast {
-  margin-top: 30px;
+  margin-top: 70px;
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -265,13 +404,67 @@ body {
 }
 
 .app.night .forecast .day {
-  background-color: white;
-  padding: 50px 30px;
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  padding: 90px 50px;
   border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app.night .forecast .day div {
+  color: #ffffff;
+}
+
+.app.night .forecast .day .date {
+  font-size: 32px;
+}
+
+.app.night .forecast .day .temp {
+  margin-top: 10px;
+  font-size: 32px;
+}
+
+.app.night .forecast .day .Clouds {
+  background-image: url("../src/images/night-cloud.svg");
+  width: 100px;
+  height: 100px;
+}
+
+.app.night .forecast .day .Rain {
+  background-image: url("../src/images/night-rain.svg");
+  width: 100px;
+  height: 100px;
+}
+
+.app.night .forecast .day .Clear {
+  background-image: url("../src/images/night-moon.svg");
+  width: 100px;
+  height: 100px;
+}
+
+.app.night .forecast .day .Snow {
+  background-image: url("../src/images/night-snow.svg");
+  width: 100px;
+  height: 100px;
 }
 
 main {
   min-height: 100vh;
+  width: 100%;
   padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
