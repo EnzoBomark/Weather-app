@@ -32,6 +32,16 @@ body{
 }
 
 @mixin weather($backgroundColor, $textColor, $boxColor, $clouds, $rain, $clear, $snow) {
+
+  main{
+    min-height: 100vh;
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+  }
  
   .search-box{
     border-bottom: 1px solid #f5f5f585;
@@ -222,10 +232,58 @@ body{
 }
 
 .app{
-  background-color: white;
+  background-color: $lightBackground;
   background-size: cover;
   background-position: bottom;
   transition: 0.4s ease-out;
+
+  .appContainer{
+    padding: 40px;
+
+    h1{
+      font-size: $normalText;
+    }
+  }
+
+  .search-box{
+    border-bottom: 1px solid #f5f5f585;
+    border-left: 1px solid #f5f5f51f;
+    border-right: 1px solid #ffffff28;
+    background: linear-gradient(30deg, rgba(181,202,238,0) 0%, rgba(255, 255, 255, 0.103) 100%);
+    border-radius: 20px;
+    margin-bottom: 675px;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+  }
+
+  .search-box .search-bar{
+   
+    display: block;
+    padding:15px 20px;
+    font-size: $smallText;
+    color:  black;
+
+    appearance: none;
+    background:none;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+
+    &::placeholder{
+    color:  black;
+    }
+  }
+
+  main{
+    min-height: 100vh;
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
 }
 
 .app.day{
@@ -240,14 +298,7 @@ body{
 
 }
 
-main{
-  min-height: 100vh;
-  width: 100%;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 
 

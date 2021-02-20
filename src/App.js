@@ -169,7 +169,14 @@ function App() {
                                 ) : ('')}
                     </div>
                     
-                ) : ('')}
+                ) : (
+                <div className="appContainer">
+                    <div className="date">{dateBuilder(new Date())}</div>
+                    <h1 className="title">Weather App</h1>
+                    <h2>Enter a country, city or state</h2>
+                    <p>The app will display the current weather, 4 day forecast and day/night cycle</p>
+                </div>
+                )}
                 
             </main>
         </div>

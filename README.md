@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+### Built With
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* [Sass](https://sass-lang.com)
+* [React](https://reactjs.org/)
 
-## Available Scripts
+## Goals and Context
+My goal is to create a competent and simple react website that works hand in hand with an api.
 
-In the project directory, you can run:
+### Installation
+<!--Insert Installation example. ex, npm install... -->
+Open your terminal and then type
+```
+$ git clone {the url to the GitHub repo}
+```
+This clones the repo
 
-### `npm start`
+cd into the new folder and type
+```
+$ npm install
+```
+This installs the required dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run the React project.
+```
+$ npm start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+*You are done!* Now you can start editing the React project in the new folder that's created.
 
-### `npm test`
+### Code Example
+<!--Insert small code example-->
+```JavaScript
+// fetch forecast data
+fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
+.then(res => res.json())
+.then(result => {
+    setQuery('');
+    let forecastDay = [];
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    if(result.cod == 200){
+        for(let i = 0; i < result.list.length; i+=8){
+            const forecastDate = (result.list[i].dt_txt).split(" ")[0];
+            const forecastType = result.list[i].weather[0].main;
+            const forecastMax = Math.ceil(result.list[i].main.temp_max);
+            const forecastMin = result.list[i].main.temp_min;
 
-### `npm run build`
+            forecastDay.push({
+                date: forecastDate, 
+                type: forecastType, 
+                max: forecastMax, 
+                min: forecastMin
+            });
+        }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        setForecast(forecastDay);
+    }
+});
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Distributed under the MIT License. 
