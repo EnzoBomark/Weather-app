@@ -31,6 +31,8 @@ body {
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
   border-radius: 20px;
   margin-bottom: 75px;
+  width: 80%;
+  max-width: 700px;
   text-align: center;
 }
 
@@ -80,7 +82,7 @@ body {
   border-right: 1px solid #ffffff28;
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px 30px;
   margin-top: 20px;
   color: #070F1D;
   font-size: 32px;
@@ -124,7 +126,7 @@ body {
   border-right: 1px solid #ffffff28;
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
   border-radius: 20px;
-  padding: 90px 70px;
+  padding: 70px 50px;
 }
 
 .app.day .weather-box .container .date {
@@ -169,24 +171,37 @@ body {
 }
 
 .app.day .forecast {
-  margin-top: 70px;
+  margin-top: 20px;
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.app.day .forecast .day {
+.app.day .forecast .container {
+  width: 90%;
+  max-width: 1300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.app.day .forecast .container .day {
+  margin: 30px;
+  width: 250px;
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
-  padding: 90px 50px;
+  padding: 50px 30px;
   border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -203,38 +218,38 @@ body {
           align-items: center;
 }
 
-.app.day .forecast .day div {
+.app.day .forecast .container .day div {
   color: #070F1D;
 }
 
-.app.day .forecast .day .date {
+.app.day .forecast .container .day .date {
   font-size: 32px;
 }
 
-.app.day .forecast .day .temp {
+.app.day .forecast .container .day .temp {
   margin-top: 10px;
   font-size: 32px;
 }
 
-.app.day .forecast .day .Clouds {
+.app.day .forecast .container .day .Clouds {
   background-image: url("../src/images/cloud.svg");
   width: 100px;
   height: 100px;
 }
 
-.app.day .forecast .day .Rain {
+.app.day .forecast .container .day .Rain {
   background-image: url("../src/images/rain.svg");
   width: 100px;
   height: 100px;
 }
 
-.app.day .forecast .day .Clear {
+.app.day .forecast .container .day .Clear {
   background-image: url("../src/images/sun.svg");
   width: 100px;
   height: 100px;
 }
 
-.app.day .forecast .day .Snow {
+.app.day .forecast .container .day .Snow {
   background-image: url("../src/images/snow.svg");
   width: 100px;
   height: 100px;
@@ -253,6 +268,8 @@ body {
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
   border-radius: 20px;
   margin-bottom: 75px;
+  width: 80%;
+  max-width: 700px;
   text-align: center;
 }
 
@@ -302,7 +319,7 @@ body {
   border-right: 1px solid #ffffff28;
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px 30px;
   margin-top: 20px;
   color: #ffffff;
   font-size: 32px;
@@ -346,7 +363,7 @@ body {
   border-right: 1px solid #ffffff28;
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
   border-radius: 20px;
-  padding: 90px 70px;
+  padding: 70px 50px;
 }
 
 .app.night .weather-box .container .date {
@@ -391,24 +408,37 @@ body {
 }
 
 .app.night .forecast {
-  margin-top: 70px;
+  margin-top: 20px;
   width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.app.night .forecast .day {
+.app.night .forecast .container {
+  width: 90%;
+  max-width: 1300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.app.night .forecast .container .day {
+  margin: 30px;
+  width: 250px;
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
   background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
-  padding: 90px 50px;
+  padding: 50px 30px;
   border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -425,38 +455,38 @@ body {
           align-items: center;
 }
 
-.app.night .forecast .day div {
+.app.night .forecast .container .day div {
   color: #ffffff;
 }
 
-.app.night .forecast .day .date {
+.app.night .forecast .container .day .date {
   font-size: 32px;
 }
 
-.app.night .forecast .day .temp {
+.app.night .forecast .container .day .temp {
   margin-top: 10px;
   font-size: 32px;
 }
 
-.app.night .forecast .day .Clouds {
+.app.night .forecast .container .day .Clouds {
   background-image: url("../src/images/night-cloud.svg");
   width: 100px;
   height: 100px;
 }
 
-.app.night .forecast .day .Rain {
+.app.night .forecast .container .day .Rain {
   background-image: url("../src/images/night-rain.svg");
   width: 100px;
   height: 100px;
 }
 
-.app.night .forecast .day .Clear {
+.app.night .forecast .container .day .Clear {
   background-image: url("../src/images/night-moon.svg");
   width: 100px;
   height: 100px;
 }
 
-.app.night .forecast .day .Snow {
+.app.night .forecast .container .day .Snow {
   background-image: url("../src/images/night-snow.svg");
   width: 100px;
   height: 100px;
