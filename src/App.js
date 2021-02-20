@@ -104,68 +104,71 @@ function App() {
                             </div>
                             <div className="date">{dateBuilder(new Date())}</div>
                         </div>
+                                {(typeof forecast[0] != 'undefined') ? (
+                                    <div>
+                                        <div className="forecast">
+                                            <div className="day">
+                                                <div>
+                                                {forecast[0].date} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].type} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].max} {forecast[0].min}
+                                                </div>      
+                                            </div>
 
-                        <div className="forecast">
-                            <div className="day">
-                                <div>
-                                    {forecast[0].date} 
-                                </div>
-                                <div>
-                                    {forecast[0].type} 
-                                </div>
-                                <div>
-                                    {forecast[0].max} {forecast[0].min}
-                                </div>
-                            </div>
+                                            <div className="day">
+                                                <div>
+                                                {forecast[0].date} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].type} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].max} {forecast[0].min}
+                                                </div>      
+                                            </div>
 
-                            <div className="day">
-                                <div>
-                                    {forecast[0].date} 
-                                </div>
-                                <div>
-                                    {forecast[0].type} 
-                                </div>
-                                <div>
-                                    {forecast[0].max} {forecast[0].min}
-                                </div>
-                            </div>
+                                            <div className="day">
+                                                <div>
+                                                {forecast[0].date} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].type} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].max} {forecast[0].min}
+                                                </div>      
+                                            </div>
 
-                            <div className="day">
-                                <div>
-                                    {forecast[0].date} 
-                                </div>
-                                <div>
-                                    {forecast[0].type} 
-                                </div>
-                                <div>
-                                    {forecast[0].max} {forecast[0].min}
-                                </div>
-                            </div>
+                                            <div className="day">
+                                                <div>
+                                                {forecast[0].date} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].type} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].max} {forecast[0].min}
+                                                </div>      
+                                            </div>
 
-                            <div className="day">
-                                <div>
-                                    {forecast[0].date} 
-                                </div>
-                                <div>
-                                    {forecast[0].type} 
-                                </div>
-                                <div>
-                                    {forecast[0].max} {forecast[0].min}
-                                </div>
-                            </div>
-
-                            <div className="day">
-                                <div>
-                                    {forecast[0].date} 
-                                </div>
-                                <div>
-                                    {forecast[0].type} 
-                                </div>
-                                <div>
-                                    {forecast[0].max} {forecast[0].min}
-                                </div>
-                            </div>
-                        </div>
+                                            <div className="day">
+                                                <div>
+                                                {forecast[0].date} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].type} 
+                                                </div>
+                                                <div>
+                                                {forecast[0].max} {forecast[0].min}
+                                                </div>      
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : ('')}
                     </div>
                     
                 ) : ('')}
