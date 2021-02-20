@@ -1,0 +1,159 @@
+$darkBlue: #0B1A26;
+$white: #ffffff;
+$lightBlue: #EBF6FF;
+
+$largeText: 72px;
+$normalText: 52px;
+$smallText: 32px;
+
+$cloudsDay: "../src/images/cloud.svg";
+$rainDay: "../src/images/rain.svg";
+$clearDay: "../src/images/sun.svg";
+$snowDay: "../src/images/snow.svg";
+
+$cloudsNight: "../src/images/night-cloud.svg";
+$rainNight: "../src/images/night-rain.svg";
+$clearNight: "../src/images/night-moon.svg";
+$snowNight: "../src/images/night-snow.svg";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight:600;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@mixin weather($backgroundColor, $textColor, $clouds, $rain, $clear, $snow) {
+ 
+  .search-box{
+    margin-bottom: 75px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .search-box .search-bar{
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding:15px;
+    font-size: $smallText;
+    color:  $textColor;
+
+    appearance: none;
+    background:none;
+    border: none;
+    outline: none;
+
+    border-radius: 20px;
+
+    &::placeholder{
+    color:  $textColor;
+    }
+  }
+
+    background-color: $backgroundColor;
+
+    .location-box .location{
+    color:   $textColor;
+    font-size: $smallText;
+    text-align: center;
+    }
+
+    .location-box .date{
+    color:   $textColor;
+    font-size: $smallText;
+    text-align: center;
+    }
+
+    .weather-box{
+      margin-top:100px;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      flex-direction: column;
+
+      .Clouds{
+        background-image: url($clouds);
+        width: 155px;
+        height: 155px;
+      }
+
+      .Rain{
+        background-image: url($rain);
+        width: 155px;
+        height: 155px;
+      }
+
+      .Clear{
+        background-image: url($clear);
+        width: 155px;
+        height: 155px;
+      }
+
+      .Snow{
+        background-image: url($snow);
+        width: 155px;
+        height: 155px;
+      }
+    }
+   
+    .weather-box .temp{
+      color:   $textColor;
+      font-size: $largeText;
+      text-align: center;
+    }
+
+    .weather-box .weather{
+      color:   $textColor;
+      font-size: $normalText;
+      text-align: center;
+    }
+
+    .forecast{
+      margin-top: 30px;
+      width:100vw;
+      display:flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .day{
+        background-color: white;
+        padding: 50px 30px;
+        border-radius: 20px;
+      }
+    }
+}
+
+.app{
+  background-color: white;
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s ease-out;
+}
+
+.app.day{
+
+  @include weather($lightBlue, $darkBlue, $cloudsDay, $rainDay, $clearDay, $snowDay);
+  
+}
+
+.app.night{
+
+  @include weather($darkBlue, $white, $cloudsNight, $rainNight, $clearNight, $snowNight);
+
+}
+
+main{
+  min-height: 100vh;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+

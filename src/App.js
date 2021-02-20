@@ -7,8 +7,7 @@ const api = {
 function App() {
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState({});
-    const [time, setTime] = useState({});
-
+    const [forecast, setForecast] = useState({});
 
     const search = evt => {
         if(evt.key === "Enter"){
@@ -27,8 +26,23 @@ function App() {
             .then(res => res.json())
             .then(result => {
                 setQuery('');
-                setTime(result);
-                // console.log(result);
+                let forecastDay = [];
+
+                for(let i = 0; i < result.list.length; i+=8){
+                    const forecastDate = (result.list[i].dt_txt).split(" ")[0];
+                    const forecastType = result.list[i].weather[0].main;
+                    const forecastMax = result.list[i].main.temp_max;
+                    const forecastMin = result.list[i].main.temp_min;
+
+                    forecastDay.push({
+                        date: forecastDate, 
+                        type: forecastType, 
+                        max: forecastMax, 
+                        min: forecastMin
+                    });
+                }
+
+                setForecast(forecastDay);
             });
         }
     }
@@ -36,22 +50,15 @@ function App() {
     const newCurrentTime = (result) => {
         let d = new Date();
         let n = d.getUTCHours();
-        let timezone = result.city.timezone/3600
+        let timezone = result.timezone/3600
         let currentTime = n + timezone;
-        let sunrise = new Date(result.city.sunrise * 1000);
-        let sunriseUtc = sunrise.getUTCHours() + timezone;
-        
-        let sunset = new Date(result.city.sunset * 1000);
+        let sunrise = new Date(result.sys.sunrise * 1000);
+        let sunriseUtc = sunrise.getUTCHours() + timezone; 
+        let sunset = new Date(result.sys.sunset * 1000);
         let sunsetUtc = sunset.getUTCHours() + timezone;
 
-        if(currentTime >= sunriseUtc && currentTime <= sunsetUtc){
-            return true
-        } else {
-            return false
-        }
+        return (currentTime >= sunriseUtc && currentTime <= sunsetUtc) ? true : false;
     }
-
-// ${(newCurrentTime(time)) ? 'day' : 'night'}
 
     const dateBuilder = (d) =>{
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -66,15 +73,13 @@ function App() {
     }
 
     return (
-        <div className={(typeof weather.main != "undefined") ? ((newCurrentTime(time)) ? 'app day': 'app night'): 'app'}>
-
-           
+        <div className={(typeof weather.main != "undefined") ? (newCurrentTime(weather) ? 'app day': 'app night') : 'app'}>
                 
             <main>
                 <div className="search-box">
                     <input type="text"
                     className="search-bar" 
-                    placeholder="search..." 
+                    placeholder="Search..."
                     onChange={e => setQuery(e.target.value)}
                     value={query}
                     onKeyPress={search}
@@ -86,16 +91,79 @@ function App() {
                         <div>
                             <div className="location-box">
                                 <div className="location">{weather.name}, {weather.sys.country}</div>
-                                <div className="date">{dateBuilder(new Date())}</div>
                             </div>
                         </div>
 
                         <div className="weather-box">
+                            <div className={weather.weather[0].main}></div>
                             <div className="temp">
                                 {Math.round(weather.main.temp)}°C
                             </div>
                             <div className="weather">
                                 {weather.weather[0].main}
+                            </div>
+                            <div className="date">{dateBuilder(new Date())}</div>
+                        </div>
+
+                        <div className="forecast">
+                            <div className="day">
+                                <div>
+                                    {forecast[0].date} 
+                                </div>
+                                <div>
+                                    {forecast[0].type} 
+                                </div>
+                                <div>
+                                    {forecast[0].max} {forecast[0].min}
+                                </div>
+                            </div>
+
+                            <div className="day">
+                                <div>
+                                    {forecast[0].date} 
+                                </div>
+                                <div>
+                                    {forecast[0].type} 
+                                </div>
+                                <div>
+                                    {forecast[0].max} {forecast[0].min}
+                                </div>
+                            </div>
+
+                            <div className="day">
+                                <div>
+                                    {forecast[0].date} 
+                                </div>
+                                <div>
+                                    {forecast[0].type} 
+                                </div>
+                                <div>
+                                    {forecast[0].max} {forecast[0].min}
+                                </div>
+                            </div>
+
+                            <div className="day">
+                                <div>
+                                    {forecast[0].date} 
+                                </div>
+                                <div>
+                                    {forecast[0].type} 
+                                </div>
+                                <div>
+                                    {forecast[0].max} {forecast[0].min}
+                                </div>
+                            </div>
+
+                            <div className="day">
+                                <div>
+                                    {forecast[0].date} 
+                                </div>
+                                <div>
+                                    {forecast[0].type} 
+                                </div>
+                                <div>
+                                    {forecast[0].max} {forecast[0].min}
+                                </div>
                             </div>
                         </div>
                     </div>
