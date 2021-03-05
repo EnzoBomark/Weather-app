@@ -10,7 +10,7 @@ My goal is to create a competent and simple react website that works hand in han
 <!--Insert Installation example. ex, npm install... -->
 Open your terminal and then type
 ```
-$ git clone {the url to the GitHub repo}
+$ git clone https://github.com/EnzoBomark/Weather-app.git
 ```
 This clones the repo
 
