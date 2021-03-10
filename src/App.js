@@ -24,49 +24,57 @@ function App() {
             fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
-                setQuery('');
-                let forecastDay = [];
 
-                if(result.cod == 200){
-                    for(let i = 0; i < result.list.length; i+=8){
-                        const forecastDate = (result.list[i].dt_txt).split(" ")[0];
-                        const forecastType = result.list[i].weather[0].main;
-                        const forecastMax = Math.ceil(result.list[i].main.temp_max);
-    
-                        forecastDay.push({
-                            date: forecastDate, 
-                            type: forecastType, 
-                            max: forecastMax, 
-                        });
-                    }
+                let forecastDay = result.list.map(item => ({
+                    date: item.dt_txt,
+                    type: item.weather[0].main,
+                    max: item.main.temp_max
+                }));
 
-                    setForecast(forecastDay);
-                }
+
+                setForecast(forecastDay.filter((e,i) => i % 8 === 7));
             });
         }
     }
 
     const newCurrentTime = (result) => {
-        let d = new Date();
-        let n = d.getUTCHours();
-        let timezone = result.timezone/3600
-        let currentTime = n + timezone;
-        let sunrise = new Date(result.sys.sunrise * 1000);
-        let sunriseUtc = sunrise.getUTCHours() + timezone; 
-        let sunset = new Date(result.sys.sunset * 1000);
-        let sunsetUtc = sunset.getUTCHours() + timezone;
-
+        const currentTime = new Date().getUTCHours() + result.timezone/3600;
+        const sunriseUtc =  new Date(result.sys.sunrise * 1000).getUTCHours() + result.timezone/3600; 
+        const sunsetUtc = new Date(result.sys.sunset * 1000).getUTCHours() + result.timezone/3600;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
 
-    const dateBuilder = (d) =>{
-        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dateBuilder = (newDate) =>{
+        
+        const months = [
+        "January", 
+        "February", 
+        "March", 
+        "April", 
+        "May", 
+        "June", 
+        "July", 
+        "August", 
+        "September", 
+        "October", 
+        "November", 
+        "December"
+        ];
+        
+        const days = [
+        "Sunday", 
+        "Monday", 
+        "Tuesday", 
+        "Wednesday", 
+        "Thursday", 
+        "Friday", 
+        "Saturday"
+        ];
 
-        let day = days[d.getDay()];
-        let date = d.getDate();
-        let month = months[d.getMonth()];
-        let year = d.getFullYear();
+        const day = days[newDate.getDay()];
+        const date = newDate.getDate();
+        const month = months[newDate.getMonth()];
+        const year = newDate.getFullYear();
 
         return `${day} ${date} ${month} ${year}`;
     }
@@ -85,7 +93,7 @@ function App() {
                     />
                 </div>
 
-                {(typeof weather.main != 'undefined') ? (
+                {(typeof weather.main != 'undefined') ? ( 
                     <div>
                         <div>
                             <div className="location-box">
@@ -105,64 +113,66 @@ function App() {
                                 <div className="date">{dateBuilder(new Date())}</div>
                             </div>
                         </div>
-                                {(typeof forecast[0] != 'undefined') ? (
-                                    <div>
-                                        <div className="forecast">
-                                            <div className="container">
-                                                <div className="day one">
-                                                    <div className='date'>
-                                                    {forecast[1].date} 
-                                                    </div>
-                                                    <div className={forecast[1].type}></div>
-                                                    <div>
-                                                    {forecast[1].type} 
-                                                    </div>
-                                                    <div className='temp'>
-                                                    {forecast[1].max}°C
-                                                    </div>      
-                                                </div>
-
-                                                <div className="day two">
-                                                    <div className='date'>
-                                                    {forecast[2].date} 
-                                                    </div>
-                                                    <div className={forecast[2].type}></div>
-                                                    <div>
-                                                    {forecast[2].type} 
-                                                    </div>
-                                                    <div className='temp'>
-                                                    {forecast[2].max}°C
-                                                    </div>      
-                                                </div>
-
-                                                <div className="day three">
-                                                    <div className='date'>
-                                                    {forecast[3].date} 
-                                                    </div>
-                                                    <div className={forecast[3].type}></div>
-                                                    <div>
-                                                    {forecast[3].type} 
-                                                    </div>
-                                                    <div className='temp'>
-                                                    {forecast[3].max}°C
-                                                    </div>      
-                                                </div>
-
-                                                <div className="day four">
-                                                    <div className='date'>
-                                                    {forecast[4].date} 
-                                                    </div>
-                                                    <div className={forecast[4].type}></div>
-                                                    <div>
-                                                    {forecast[4].type} 
-                                                    </div>
-                                                    <div className='temp'>
-                                                    {forecast[4].max}°C
-                                                    </div>      
-                                                </div>
+                        
+                        {(typeof forecast[0] != 'undefined') ? (
+                            <div>
+                                <div className="forecast">
+                                    <div className="container">
+                                        {}
+                                        <div className="day one">
+                                            <div className='date'>
+                                            {forecast[1].date} 
                                             </div>
+                                            <div className={forecast[1].type}></div>
+                                            <div>
+                                            {forecast[1].type} 
+                                            </div>
+                                            <div className='temp'>
+                                            {forecast[1].max}°C
+                                            </div>      
+                                        </div>
+
+                                        <div className="day two">
+                                            <div className='date'>
+                                            {forecast[2].date} 
+                                            </div>
+                                            <div className={forecast[2].type}></div>
+                                            <div>
+                                            {forecast[2].type} 
+                                            </div>
+                                            <div className='temp'>
+                                            {forecast[2].max}°C
+                                            </div>      
+                                        </div>
+
+                                        <div className="day three">
+                                            <div className='date'>
+                                            {forecast[3].date} 
+                                            </div>
+                                            <div className={forecast[3].type}></div>
+                                            <div>
+                                            {forecast[3].type} 
+                                            </div>
+                                            <div className='temp'>
+                                            {forecast[3].max}°C
+                                            </div>      
+                                        </div>
+
+                                        <div className="day four">
+                                            <div className='date'>
+                                            {forecast[4].date} 
+                                            </div>
+                                            <div className={forecast[4].type}></div>
+                                            <div>
+                                            {forecast[4].type} 
+                                            </div>
+                                            <div className='temp'>
+                                            {forecast[4].max}°C
+                                            </div>      
                                         </div>
                                     </div>
+                                </div>
+                            </div>
                                 ) : ('')}
                     </div>
                     
