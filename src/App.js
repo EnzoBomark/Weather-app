@@ -32,7 +32,6 @@ function App() {
                     temp: item.main.temp_max
                 }));
 
-
                 setWeather(weather[0]);
                 setForecast(weather.filter((e,i) => i % 8 === 7));
                 setCountry(country);
@@ -44,46 +43,11 @@ function App() {
         const timezone = result.timezone/3600, 
               sunrise = result.sunrise * 1000, 
               sunset = result.sunset * 1000;
-              
+
         const currentTime = new Date().getUTCHours() + timezone;
         const sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
         const sunsetUtc = new Date(sunset).getUTCHours() + timezone;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
-    }
-
-    const dateBuilder = (newDate) =>{
-        
-        const months = [
-        "January", 
-        "February", 
-        "March", 
-        "April", 
-        "May", 
-        "June", 
-        "July", 
-        "August", 
-        "September", 
-        "October", 
-        "November", 
-        "December"
-        ];
-        
-        const days = [
-        "Sunday", 
-        "Monday", 
-        "Tuesday", 
-        "Wednesday", 
-        "Thursday", 
-        "Friday", 
-        "Saturday"
-        ];
-
-        const day = days[newDate.getDay()];
-        const date = newDate.getDate();
-        const month = months[newDate.getMonth()];
-        const year = newDate.getFullYear();
-
-        return `${day} ${date} ${month} ${year}`;
     }
 
     return (
@@ -116,7 +80,7 @@ function App() {
                                 <div className="weather">
                                     {weather.type}
                                 </div>
-                                <div className="date">{dateBuilder(new Date())}</div>
+                                <div className="date">{new Date().toDateString()}</div>
                             </div>
                         </div>
 
@@ -132,7 +96,7 @@ function App() {
                                                 {item.type} 
                                                 </div>
                                                 <div className='temp'>
-                                                {item.max}°C
+                                                {item.temp}°C
                                                 </div>      
                                             </div>
                                 })}
@@ -143,10 +107,10 @@ function App() {
 
                 { country == false && 
                     <div className="appContainer">
-                        <div className="date">{dateBuilder(new Date())}</div>
+                        <div className="date">{new Date().toDateString()}</div>
                         <h1 className="title">Weather App</h1>
                         <h2>Enter a country, city or state</h2>
-                        <p>The app will display the current weather, 4 day forecast and day/night cycle</p>
+                        <p>The app will display the current weather, 5 day forecast and day/night cycle</p>
                     </div>
                 }
             </main>
