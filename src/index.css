@@ -41,7 +41,7 @@ body {
 .app .search-box .search-bar {
   display: block;
   padding: 15px 20px;
-  font-size: 32px;
+  font-size: 30px;
   color: black;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -127,7 +127,7 @@ body {
 .app.day .search-box .search-bar {
   display: block;
   padding: 15px 20px;
-  font-size: 32px;
+  font-size: 30px;
   color: #070F1D;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -173,7 +173,7 @@ body {
   padding: 20px 30px;
   margin-top: 20px;
   color: #070F1D;
-  font-size: 32px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -311,12 +311,13 @@ body {
 }
 
 .app.day .forecast .container .day .date {
-  font-size: 32px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .app.day .forecast .container .day .temp {
   margin-top: 10px;
-  font-size: 32px;
+  font-size: 30px;
 }
 
 .app.day .forecast .container .day .Clouds {
@@ -383,7 +384,7 @@ body {
 .app.night .search-box .search-bar {
   display: block;
   padding: 15px 20px;
-  font-size: 32px;
+  font-size: 30px;
   color: #ffffff;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -429,7 +430,7 @@ body {
   padding: 20px 30px;
   margin-top: 20px;
   color: #ffffff;
-  font-size: 32px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -567,12 +568,13 @@ body {
 }
 
 .app.night .forecast .container .day .date {
-  font-size: 32px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .app.night .forecast .container .day .temp {
   margin-top: 10px;
-  font-size: 32px;
+  font-size: 30px;
 }
 
 .app.night .forecast .container .day .Clouds {

@@ -8,7 +8,7 @@ $white: #ffffff;
 
 $largeText: 72px;
 $normalText: 52px;
-$smallText: 32px;
+$smallText: 30px;
 
 $cloudsDay: "../src/images/cloud.svg";
 $rainDay: "../src/images/rain.svg";
@@ -196,6 +196,7 @@ body{
     
             .date{
               font-size: $smallText;
+              text-align: center;
             }
     
             .temp{
