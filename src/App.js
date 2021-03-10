@@ -6,39 +6,44 @@ const api = {
 
 function App() {
     const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState({});
+    const [country, setCountry] = useState(false);
+    const [weather, setWeather] = useState(false);
     const [forecast, setForecast] = useState(false);
 
     const search = evt => {
         if(evt.key === "Enter"){
-            
-            // fetch weather data
-            fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-            .then(res => res.json())
-            .then(result => {
-                setWeather(result);
-                setQuery('');
-            });
-
-            // fetch forecast data
+            // fetch weather and forecast data
             fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
-                if(result.cod == 404) return setForecast(false);
-                let forecastDay = result.list.map(item => ({
+                setQuery('');
+
+                if(result.cod === "404") return setCountry(false);
+                const country = {
+                    name: result.city.name,
+                    country: result.city.country,
+                    sunset: result.city.sunset,
+                    sunrise: result.city.sunrise,
+                    timezone: result.city.timezone,
+                };
+                const weather = result.list.map(item => ({
                     date: item.dt_txt,
                     type: item.weather[0].main,
-                    max: item.main.temp_max
+                    temp: item.main.temp_max
                 }));
-                setForecast(forecastDay.filter((e,i) => i % 8 === 7));
+
+
+                setWeather(weather[0]);
+                setForecast(weather.filter((e,i) => i % 8 === 7));
+                setCountry(country);
             });
         }
     }
 
     const newCurrentTime = (result) => {
         const currentTime = new Date().getUTCHours() + result.timezone/3600;
-        const sunriseUtc =  new Date(result.sys.sunrise * 1000).getUTCHours() + result.timezone/3600; 
-        const sunsetUtc = new Date(result.sys.sunset * 1000).getUTCHours() + result.timezone/3600;
+        const sunriseUtc =  new Date(result.sunrise * 1000).getUTCHours() + result.timezone/3600; 
+        const sunsetUtc = new Date(result.sunset * 1000).getUTCHours() + result.timezone/3600;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
 
@@ -78,8 +83,7 @@ function App() {
     }
 
     return (
-        <div className={(typeof weather.main != "undefined") ? (newCurrentTime(weather) ? 'app day': 'app night') : 'app'}>
-                
+        <div className={(country) ? (newCurrentTime(country) ? 'app day': 'app night') : 'app'}>
             <main>
                 <div className="search-box">
                     <input type="text"
@@ -91,58 +95,56 @@ function App() {
                     />
                 </div>
 
-                {(typeof weather.main != 'undefined') ? ( 
+                { country &&
                     <div>
                         <div>
                             <div className="location-box">
-                                <div className="location">{weather.name}, {weather.sys.country}</div>
+                                <div className="location">{country.name}, {country.country}</div>
                             </div>
                         </div>
 
                         <div className="weather-box">
                             <div className="container">
-                                <div className={weather.weather[0].main}></div>
+                                <div className={weather.type}></div>
                                 <div className="temp">
-                                    {Math.round(weather.main.temp)}°C
+                                    {weather.temp}°C
                                 </div>
                                 <div className="weather">
-                                    {weather.weather[0].main}
+                                    {weather.type}
                                 </div>
                                 <div className="date">{dateBuilder(new Date())}</div>
                             </div>
                         </div>
-                        
-                        { forecast && 
-                            <div className="forecast">
-                                <div className="container">
-                                    {forecast.map((item, index) => {
-                                        return  <div className="day one" key={index}> 
-                                                    <div className='date'>
-                                                    {item.date} 
-                                                    </div>
-                                                    <div className={item.type}></div>
-                                                    <div>
-                                                    {item.type} 
-                                                    </div>
-                                                    <div className='temp'>
-                                                    {item.max}°C
-                                                    </div>      
+
+                        <div className="forecast">
+                            <div className="container">
+                                {forecast.map((item, index) => {
+                                    return  <div className="day one" key={index}> 
+                                                <div className='date'>
+                                                {item.date} 
                                                 </div>
-                                    })}
-                                </div>
+                                                <div className={item.type}></div>
+                                                <div>
+                                                {item.type} 
+                                                </div>
+                                                <div className='temp'>
+                                                {item.max}°C
+                                                </div>      
+                                            </div>
+                                })}
                             </div>
-                        }
+                        </div>
                     </div>
-                    
-                ) : (
-                <div className="appContainer">
-                    <div className="date">{dateBuilder(new Date())}</div>
-                    <h1 className="title">Weather App</h1>
-                    <h2>Enter a country, city or state</h2>
-                    <p>The app will display the current weather, 4 day forecast and day/night cycle</p>
-                </div>
-                )}
-                
+                }
+
+                { country == false && 
+                    <div className="appContainer">
+                        <div className="date">{dateBuilder(new Date())}</div>
+                        <h1 className="title">Weather App</h1>
+                        <h2>Enter a country, city or state</h2>
+                        <p>The app will display the current weather, 4 day forecast and day/night cycle</p>
+                    </div>
+                }
             </main>
         </div>
     )
