@@ -18,7 +18,6 @@ function App() {
             .then(result => {
                 setWeather(result);
                 setQuery('');
-                // console.log(result);
             });
 
             // fetch forecast data
@@ -33,13 +32,11 @@ function App() {
                         const forecastDate = (result.list[i].dt_txt).split(" ")[0];
                         const forecastType = result.list[i].weather[0].main;
                         const forecastMax = Math.ceil(result.list[i].main.temp_max);
-                        const forecastMin = result.list[i].main.temp_min;
     
                         forecastDay.push({
                             date: forecastDate, 
                             type: forecastType, 
                             max: forecastMax, 
-                            min: forecastMin
                         });
                     }
 
@@ -59,7 +56,7 @@ function App() {
         let sunset = new Date(result.sys.sunset * 1000);
         let sunsetUtc = sunset.getUTCHours() + timezone;
 
-        return (currentTime >= sunriseUtc && currentTime <= sunsetUtc) ? true : false;
+        return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
 
     const dateBuilder = (d) =>{
