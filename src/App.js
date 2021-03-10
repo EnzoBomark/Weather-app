@@ -7,7 +7,7 @@ const api = {
 function App() {
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState({});
-    const [forecast, setForecast] = useState({});
+    const [forecast, setForecast] = useState(false);
 
     const search = evt => {
         if(evt.key === "Enter"){
@@ -24,14 +24,12 @@ function App() {
             fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
             .then(result => {
-
+                if(result.cod == 404) return setForecast(false);
                 let forecastDay = result.list.map(item => ({
                     date: item.dt_txt,
                     type: item.weather[0].main,
                     max: item.main.temp_max
                 }));
-
-
                 setForecast(forecastDay.filter((e,i) => i % 8 === 7));
             });
         }
@@ -114,66 +112,26 @@ function App() {
                             </div>
                         </div>
                         
-                        {(typeof forecast[0] != 'undefined') ? (
-                            <div>
-                                <div className="forecast">
-                                    <div className="container">
-                                        {}
-                                        <div className="day one">
-                                            <div className='date'>
-                                            {forecast[1].date} 
-                                            </div>
-                                            <div className={forecast[1].type}></div>
-                                            <div>
-                                            {forecast[1].type} 
-                                            </div>
-                                            <div className='temp'>
-                                            {forecast[1].max}°C
-                                            </div>      
-                                        </div>
-
-                                        <div className="day two">
-                                            <div className='date'>
-                                            {forecast[2].date} 
-                                            </div>
-                                            <div className={forecast[2].type}></div>
-                                            <div>
-                                            {forecast[2].type} 
-                                            </div>
-                                            <div className='temp'>
-                                            {forecast[2].max}°C
-                                            </div>      
-                                        </div>
-
-                                        <div className="day three">
-                                            <div className='date'>
-                                            {forecast[3].date} 
-                                            </div>
-                                            <div className={forecast[3].type}></div>
-                                            <div>
-                                            {forecast[3].type} 
-                                            </div>
-                                            <div className='temp'>
-                                            {forecast[3].max}°C
-                                            </div>      
-                                        </div>
-
-                                        <div className="day four">
-                                            <div className='date'>
-                                            {forecast[4].date} 
-                                            </div>
-                                            <div className={forecast[4].type}></div>
-                                            <div>
-                                            {forecast[4].type} 
-                                            </div>
-                                            <div className='temp'>
-                                            {forecast[4].max}°C
-                                            </div>      
-                                        </div>
-                                    </div>
+                        { forecast && 
+                            <div className="forecast">
+                                <div className="container">
+                                    {forecast.map((item, index) => {
+                                        return  <div className="day one" key={index}> 
+                                                    <div className='date'>
+                                                    {item.date} 
+                                                    </div>
+                                                    <div className={item.type}></div>
+                                                    <div>
+                                                    {item.type} 
+                                                    </div>
+                                                    <div className='temp'>
+                                                    {item.max}°C
+                                                    </div>      
+                                                </div>
+                                    })}
                                 </div>
                             </div>
-                                ) : ('')}
+                        }
                     </div>
                     
                 ) : (
