@@ -1,6 +1,6 @@
 $darkBackground: #070f1d;
 $lightBackground: #a9c9ff;
-$lightText: #B5CAEE;
+$lightText: #ffffff;
 $darkText: #070F1D;
 $ligtBox: #A0BBE9;
 $darkBox: #111655;
@@ -25,130 +25,80 @@ $snowNight: "../src/images/night-snow.svg";
   padding: 0;
   box-sizing: border-box;
   font-weight:600;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-  font-family: Arial, Helvetica, sans-serif;
+@mixin flexBox($align, $justify, $dir) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $dir;
+}
+
+@mixin glassTexture() {
+  border-bottom: 1px solid #f5f5f585;
+    border-left: 1px solid #f5f5f51f;
+    border-right: 1px solid #ffffff28;
+    background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+@mixin img($url, $size) {
+  background-image: url($url);
+  width: $size;
+  height: $size;
 }
 
 @mixin weather($backgroundColor, $textColor, $boxColor, $clouds, $rain, $clear, $snow) {
 
   main{
-    min-height: 100vh;
-    width: 100%;
-    padding: 25px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+    @include flexBox(center, flex-start, column);
   }
  
   .search-box{
-    border-bottom: 1px solid #f5f5f585;
-    border-left: 1px solid #f5f5f51f;
-    border-right: 1px solid #ffffff28;
-    background: linear-gradient(30deg, rgba(181,202,238,0) 0%, rgba(255, 255, 255, 0.103) 100%);
-    border-radius: 20px;
-    margin-bottom: 75px;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-  }
+    margin: 35px 0 75px 0;
 
-  .search-box .search-bar{
-   
-    display: block;
-    padding:15px 20px;
-    font-size: $smallText;
-    color:  $textColor;
-
-    appearance: none;
-    background:none;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-
-    &::placeholder{
-    color:  $textColor;
+    .search-bar{
+      color:  $textColor;
+      width: 100%;
+  
+      &::placeholder{
+      color:  $textColor;
+      }
     }
   }
 
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(17, 41, 255, 0.37) 100%);
+    background: linear-gradient(180deg, #ffffff00 0%, #1129ff5e 100%);
     background-color: $backgroundColor;
 
     .location-box{
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-    }
+      @include flexBox(center, center, column);
 
-    .location-box .location{
-    
-    border-bottom: 1px solid #f5f5f585;
-    border-left: 1px solid #f5f5f51f;
-    border-right: 1px solid #ffffff28;
-    background: linear-gradient(30deg, rgba(181,202,238,0) 0%, rgba(255, 255, 255, 0.103) 100%);
-    border-radius: 20px;
-    padding: 20px 30px;
-    margin-top: 20px;
-    color:   $textColor;
-    font-size: $smallText;
-    text-align: center;
+      .location{
+        @include glassTexture();
+        margin: 20px 0;
+        color:   $textColor;
+        font-size: $smallText;
+        text-align: center;
+      }
     }
-
- 
 
     .weather-box{
-      width: 100vw;
-      margin-top: 30px;
-      
-      display: flex;
-      align-items:center;
-      justify-content: center;
-      flex-direction: column;
+      @include flexBox(center, center, column);
 
       .container{
-        display: flex;
-        align-items:center;
-        justify-content: center;
-        flex-direction: column;
+        @include flexBox(center, center, column);
 
-        border-bottom: 1px solid #f5f5f585;
-        border-left: 1px solid #f5f5f51f;
-        border-right: 1px solid #ffffff28;
-        background: linear-gradient(30deg, rgba(181,202,238,0) 0%, rgba(255, 255, 255, 0.103) 100%);
+        @include glassTexture();
         border-radius: 20px;
         padding:70px 50px;
 
         .date{
           color:   $textColor;
           text-align: center;
-          }
-  
-        .Clouds{
-          background-image: url($clouds);
-          width: 155px;
-          height: 155px;
         }
   
-        .Rain{
-          background-image: url($rain);
-          width: 155px;
-          height: 155px;
-        }
-  
-        .Clear{
-          background-image: url($clear);
-          width: 155px;
-          height: 155px;
-        }
-  
-        .Snow{
-          background-image: url($snow);
-          width: 155px;
-          height: 155px;
-        }
-
         .temp{
           color:   $textColor;
           font-size: $largeText;
@@ -160,35 +110,39 @@ body{
           font-size: $normalText;
           text-align: center;
         }
+          
+        .Clouds{
+          @include img($clouds, 155px);
+        }
+  
+        .Rain{
+          @include img($rain, 155px);
+        }
+  
+        .Clear{
+          @include img($clear, 155px);
+        }
+  
+        .Snow{
+          @include img($snow, 155px);
+        }
+
       }
     }
 
     .forecast{
-      margin-top: 20px;
-      width:100vw;
-      display: flex;
-      justify-content: center;
+      @include flexBox(center, center, column);
 
         .container{
-          width: 90%;
-          max-width: 1300px;
-          display: flex;
-          justify-content: center;
+          @include flexBox(center, center, row);
           flex-wrap: wrap;
 
           .day{
+            @include flexBox(center, space-between, column);
+            @include glassTexture();
             margin: 30px;
             width: 250px;
-            border-bottom: 1px solid #f5f5f585;
-            border-left: 1px solid #f5f5f51f;
-            border-right: 1px solid #ffffff28;
-            background: linear-gradient(30deg, rgba(181,202,238,0) 0%, rgba(255, 255, 255, 0.103) 100%);
             padding: 50px 30px;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
     
             div{
               color: $textColor;
@@ -205,27 +159,19 @@ body{
             }
     
             .Clouds{
-              background-image: url($clouds);
-              width: 100px;
-              height: 100px;
+              @include img($clouds, 100px);
             }
       
             .Rain{
-              background-image: url($rain);
-              width: 100px;
-              height: 100px;
+              @include img($rain, 100px);
             }
       
             .Clear{
-              background-image: url($clear);
-              width: 100px;
-              height: 100px;
+              @include img($clear, 100px);
             }
       
             .Snow{
-              background-image: url($snow);
-              width: 100px;
-              height: 100px;
+              @include img($snow, 100px);
             }
         }
       }
@@ -234,8 +180,6 @@ body{
 
 .app{
   background-color: $lightBackground;
-  background-size: cover;
-  background-position: bottom;
   transition: 0.4s ease-out;
 
   .appContainer{
@@ -247,39 +191,28 @@ body{
   }
 
   .search-box{
-    border-bottom: 1px solid #f5f5f585;
-    border-left: 1px solid #f5f5f51f;
-    border-right: 1px solid #ffffff28;
-    background: linear-gradient(30deg, rgba(181,202,238,0) 0%, rgba(255, 255, 255, 0.103) 100%);
-    border-radius: 20px;
-    margin-bottom: 675px;
+    @include glassTexture();
     width: 80%;
+    margin: 0 0 675px 0;
     max-width: 700px;
-    text-align: center;
-  }
 
-  .search-box .search-bar{
-   
-    display: block;
-    padding:15px 20px;
-    font-size: $smallText;
-    color:  black;
-
-    appearance: none;
-    background:none;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-
-    &::placeholder{
-    color:  black;
+    .search-bar{
+      font-size: $smallText;
+      color:  $darkText;
+  
+      background:none;
+      border: none;
+      outline: none;
+  
+      &::placeholder{
+      color:  $darkText;
+      }
     }
   }
 
   main{
     min-height: 100vh;
     width: 100%;
-    padding: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -288,15 +221,11 @@ body{
 }
 
 .app.day{
-
   @include weather($lightBackground, $darkText, $ligtBox, $cloudsDay, $rainDay, $clearDay, $snowDay);
-  
 }
 
 .app.night{
-
-  @include weather($darkBackground, $white, $darkBox, $cloudsNight, $rainNight, $clearNight, $snowNight);
-
+  @include weather($darkBackground, $lightText, $darkBox, $cloudsNight, $rainNight, $clearNight, $snowNight);
 }
 
 

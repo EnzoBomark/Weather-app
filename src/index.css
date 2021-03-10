@@ -4,16 +4,11 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-weight: 600;
-}
-
-body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .app {
   background-color: #a9c9ff;
-  background-size: cover;
-  background-position: bottom;
   -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
 }
@@ -30,48 +25,41 @@ body {
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
   border-radius: 20px;
-  margin-bottom: 675px;
+  padding: 20px 30px;
   width: 80%;
+  margin: 0 0 675px 0;
   max-width: 700px;
-  text-align: center;
 }
 
 .app .search-box .search-bar {
-  display: block;
-  padding: 15px 20px;
   font-size: 30px;
-  color: black;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  color: #070F1D;
   background: none;
   border: none;
   outline: none;
-  border-radius: 20px;
 }
 
 .app .search-box .search-bar::-webkit-input-placeholder {
-  color: black;
+  color: #070F1D;
 }
 
 .app .search-box .search-bar:-ms-input-placeholder {
-  color: black;
+  color: #070F1D;
 }
 
 .app .search-box .search-bar::-ms-input-placeholder {
-  color: black;
+  color: #070F1D;
 }
 
 .app .search-box .search-bar::placeholder {
-  color: black;
+  color: #070F1D;
 }
 
 .app main {
   min-height: 100vh;
   width: 100%;
-  padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -88,24 +76,21 @@ body {
 }
 
 .app.day {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(17, 41, 255, 0.37)));
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(17, 41, 255, 0.37) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), to(#1129ff5e));
+  background: linear-gradient(180deg, #ffffff00 0%, #1129ff5e 100%);
   background-color: #a9c9ff;
 }
 
 .app.day main {
-  min-height: 100vh;
-  width: 100%;
-  padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -113,29 +98,12 @@ body {
 }
 
 .app.day .search-box {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
-  border-radius: 20px;
-  margin-bottom: 75px;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
+  margin: 35px 0 75px 0;
 }
 
 .app.day .search-box .search-bar {
-  display: block;
-  padding: 15px 20px;
-  font-size: 30px;
   color: #070F1D;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .app.day .search-box .search-bar::-webkit-input-placeholder {
@@ -155,31 +123,35 @@ body {
 }
 
 .app.day .location-box {
-  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .app.day .location-box .location {
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
   border-radius: 20px;
   padding: 20px 30px;
-  margin-top: 20px;
+  margin: 20px 0;
   color: #070F1D;
   font-size: 30px;
   text-align: center;
 }
 
 .app.day .weather-box {
-  width: 100vw;
-  margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,13 +184,27 @@ body {
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
+  border-radius: 20px;
+  padding: 20px 30px;
   border-radius: 20px;
   padding: 70px 50px;
 }
 
 .app.day .weather-box .container .date {
   color: #070F1D;
+  text-align: center;
+}
+
+.app.day .weather-box .container .temp {
+  color: #070F1D;
+  font-size: 72px;
+  text-align: center;
+}
+
+.app.day .weather-box .container .weather {
+  color: #070F1D;
+  font-size: 52px;
   text-align: center;
 }
 
@@ -246,64 +232,63 @@ body {
   height: 155px;
 }
 
-.app.day .weather-box .container .temp {
-  color: #070F1D;
-  font-size: 72px;
-  text-align: center;
-}
-
-.app.day .weather-box .container .weather {
-  color: #070F1D;
-  font-size: 52px;
-  text-align: center;
-}
-
 .app.day .forecast {
-  margin-top: 20px;
-  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .app.day .forecast .container {
-  width: 90%;
-  max-width: 1300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 .app.day .forecast .container .day {
-  margin: 30px;
-  width: 250px;
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
-  padding: 50px 30px;
-  border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin: 30px;
+  width: 250px;
+  padding: 50px 30px;
 }
 
 .app.day .forecast .container .day div {
@@ -345,24 +330,21 @@ body {
 }
 
 .app.night {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(rgba(17, 41, 255, 0.37)));
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(17, 41, 255, 0.37) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), to(#1129ff5e));
+  background: linear-gradient(180deg, #ffffff00 0%, #1129ff5e 100%);
   background-color: #070f1d;
 }
 
 .app.night main {
-  min-height: 100vh;
-  width: 100%;
-  padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -370,29 +352,12 @@ body {
 }
 
 .app.night .search-box {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
-  border-radius: 20px;
-  margin-bottom: 75px;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
+  margin: 35px 0 75px 0;
 }
 
 .app.night .search-box .search-bar {
-  display: block;
-  padding: 15px 20px;
-  font-size: 30px;
   color: #ffffff;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 20px;
+  width: 100%;
 }
 
 .app.night .search-box .search-bar::-webkit-input-placeholder {
@@ -412,31 +377,35 @@ body {
 }
 
 .app.night .location-box {
-  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .app.night .location-box .location {
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
   border-radius: 20px;
   padding: 20px 30px;
-  margin-top: 20px;
+  margin: 20px 0;
   color: #ffffff;
   font-size: 30px;
   text-align: center;
 }
 
 .app.night .weather-box {
-  width: 100vw;
-  margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -469,13 +438,27 @@ body {
   border-bottom: 1px solid #f5f5f585;
   border-left: 1px solid #f5f5f51f;
   border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
+  border-radius: 20px;
+  padding: 20px 30px;
   border-radius: 20px;
   padding: 70px 50px;
 }
 
 .app.night .weather-box .container .date {
   color: #ffffff;
+  text-align: center;
+}
+
+.app.night .weather-box .container .temp {
+  color: #ffffff;
+  font-size: 72px;
+  text-align: center;
+}
+
+.app.night .weather-box .container .weather {
+  color: #ffffff;
+  font-size: 52px;
   text-align: center;
 }
 
@@ -503,64 +486,63 @@ body {
   height: 155px;
 }
 
-.app.night .weather-box .container .temp {
-  color: #ffffff;
-  font-size: 72px;
-  text-align: center;
-}
-
-.app.night .weather-box .container .weather {
-  color: #ffffff;
-  font-size: 52px;
-  text-align: center;
-}
-
 .app.night .forecast {
-  margin-top: 20px;
-  width: 100vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .app.night .forecast .container {
-  width: 90%;
-  max-width: 1300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 .app.night .forecast .container .day {
-  margin: 30px;
-  width: 250px;
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, rgba(181, 202, 238, 0) 0%, rgba(255, 255, 255, 0.103) 100%);
-  padding: 50px 30px;
-  border-radius: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  border-bottom: 1px solid #f5f5f585;
+  border-left: 1px solid #f5f5f51f;
+  border-right: 1px solid #ffffff28;
+  background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin: 30px;
+  width: 250px;
+  padding: 50px 30px;
 }
 
 .app.night .forecast .container .day div {
