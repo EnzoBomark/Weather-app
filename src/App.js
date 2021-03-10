@@ -10,8 +10,9 @@ function App() {
     const [weather, setWeather] = useState(false);
     const [forecast, setForecast] = useState(false);
 
-    const search = evt => {
-        if(evt.key === "Enter"){
+    const search = e => {
+        if(e.key === "Enter" && query !== ''){
+            
             // fetch weather and forecast data
             fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
             .then(res => res.json())
@@ -39,6 +40,7 @@ function App() {
         }
     }
 
+    // Return true when the sun is up
     const newCurrentTime = (result) => {
         const timezone = result.timezone/3600, 
               sunrise = result.sunrise * 1000, 
@@ -75,7 +77,7 @@ function App() {
                             <div className="container">
                                 <div className={weather.type}></div>
                                 <div className="temp">
-                                    {weather.temp}°C
+                                    {Math.round(weather.temp * 10) / 10}°C
                                 </div>
                                 <div className="weather">
                                     {weather.type}
@@ -96,7 +98,7 @@ function App() {
                                                 {item.type} 
                                                 </div>
                                                 <div className='temp'>
-                                                {item.temp}°C
+                                                {Math.round(item.temp * 10) / 10}°C
                                                 </div>      
                                             </div>
                                 })}
