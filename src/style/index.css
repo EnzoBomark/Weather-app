@@ -209,25 +209,25 @@
 }
 
 .app.day .weather-box .container .Clouds {
-  background-image: url("../src/images/cloud.svg");
+  background-image: url("../images/cloud.svg");
   width: 155px;
   height: 155px;
 }
 
 .app.day .weather-box .container .Rain {
-  background-image: url("../src/images/rain.svg");
+  background-image: url("../images/rain.svg");
   width: 155px;
   height: 155px;
 }
 
 .app.day .weather-box .container .Clear {
-  background-image: url("../src/images/sun.svg");
+  background-image: url("../images/sun.svg");
   width: 155px;
   height: 155px;
 }
 
 .app.day .weather-box .container .Snow {
-  background-image: url("../src/images/snow.svg");
+  background-image: url("../images/snow.svg");
   width: 155px;
   height: 155px;
 }
@@ -306,25 +306,25 @@
 }
 
 .app.day .forecast .container .day .Clouds {
-  background-image: url("../src/images/cloud.svg");
+  background-image: url("../images/cloud.svg");
   width: 100px;
   height: 100px;
 }
 
 .app.day .forecast .container .day .Rain {
-  background-image: url("../src/images/rain.svg");
+  background-image: url("../images/rain.svg");
   width: 100px;
   height: 100px;
 }
 
 .app.day .forecast .container .day .Clear {
-  background-image: url("../src/images/sun.svg");
+  background-image: url("../images/sun.svg");
   width: 100px;
   height: 100px;
 }
 
 .app.day .forecast .container .day .Snow {
-  background-image: url("../src/images/snow.svg");
+  background-image: url("../images/snow.svg");
   width: 100px;
   height: 100px;
 }
@@ -463,25 +463,25 @@
 }
 
 .app.night .weather-box .container .Clouds {
-  background-image: url("../src/images/night-cloud.svg");
+  background-image: url("../images/night-cloud.svg");
   width: 155px;
   height: 155px;
 }
 
 .app.night .weather-box .container .Rain {
-  background-image: url("../src/images/night-rain.svg");
+  background-image: url("../images/night-rain.svg");
   width: 155px;
   height: 155px;
 }
 
 .app.night .weather-box .container .Clear {
-  background-image: url("../src/images/night-moon.svg");
+  background-image: url("../images/night-moon.svg");
   width: 155px;
   height: 155px;
 }
 
 .app.night .weather-box .container .Snow {
-  background-image: url("../src/images/night-snow.svg");
+  background-image: url("../images/night-snow.svg");
   width: 155px;
   height: 155px;
 }
@@ -560,25 +560,25 @@
 }
 
 .app.night .forecast .container .day .Clouds {
-  background-image: url("../src/images/night-cloud.svg");
+  background-image: url("../images/night-cloud.svg");
   width: 100px;
   height: 100px;
 }
 
 .app.night .forecast .container .day .Rain {
-  background-image: url("../src/images/night-rain.svg");
+  background-image: url("../images/night-rain.svg");
   width: 100px;
   height: 100px;
 }
 
 .app.night .forecast .container .day .Clear {
-  background-image: url("../src/images/night-moon.svg");
+  background-image: url("../images/night-moon.svg");
   width: 100px;
   height: 100px;
 }
 
 .app.night .forecast .container .day .Snow {
-  background-image: url("../src/images/night-snow.svg");
+  background-image: url("../images/night-snow.svg");
   width: 100px;
   height: 100px;
 }
