@@ -41,9 +41,13 @@ function App() {
     }
 
     const newCurrentTime = (result) => {
-        const currentTime = new Date().getUTCHours() + result.timezone/3600;
-        const sunriseUtc =  new Date(result.sunrise * 1000).getUTCHours() + result.timezone/3600; 
-        const sunsetUtc = new Date(result.sunset * 1000).getUTCHours() + result.timezone/3600;
+        const timezone = result.timezone/3600, 
+              sunrise = result.sunrise * 1000, 
+              sunset = result.sunset * 1000;
+              
+        const currentTime = new Date().getUTCHours() + timezone;
+        const sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
+        const sunsetUtc = new Date(sunset).getUTCHours() + timezone;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
 
