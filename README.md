@@ -30,31 +30,30 @@ $ npm start
 ### Code Example
 <!--Insert small code example-->
 ```JavaScript
-// fetch forecast data
-fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
-.then(res => res.json())
-.then(result => {
-    setQuery('');
-    let forecastDay = [];
+ // fetch weather and forecast data
+    fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
+    .then(res => res.json())
+    .then(result => {
+        setQuery('');
 
-    if(result.cod == 200){
-        for(let i = 0; i < result.list.length; i+=8){
-            const forecastDate = (result.list[i].dt_txt).split(" ")[0];
-            const forecastType = result.list[i].weather[0].main;
-            const forecastMax = Math.ceil(result.list[i].main.temp_max);
-            const forecastMin = result.list[i].main.temp_min;
+        if(result.cod === "404") return setCountry(false);
+        const country = {
+            name: result.city.name,
+            country: result.city.country,
+            sunset: result.city.sunset,
+            sunrise: result.city.sunrise,
+            timezone: result.city.timezone,
+        };
+        const weather = result.list.map(item => ({
+            date: item.dt_txt,
+            type: item.weather[0].main,
+            temp: item.main.temp_max
+        }));
 
-            forecastDay.push({
-                date: forecastDate, 
-                type: forecastType, 
-                max: forecastMax, 
-                min: forecastMin
-            });
-        }
-
-        setForecast(forecastDay);
-    }
-});
+        setWeather(weather[0]);
+        setForecast(weather.filter((e,i) => i % 8 === 7));
+        setCountry(country);
+    });
 ```
 
 ## License
