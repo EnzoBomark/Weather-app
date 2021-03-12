@@ -1,3 +1,6 @@
+# Weather-app
+## [Deployed app](https://enzobomark.github.io/Weather-app/)
+
 ### Built With
 
 * [Sass](https://sass-lang.com)
