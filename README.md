@@ -28,7 +28,7 @@ To run the React project.
 $ npm start
 ```
 
-*You are done!* Now you can start editing the React project in the new folder that's created.
+*You are done!* 
 
 ### Code Example
 <!--Insert small code example-->
