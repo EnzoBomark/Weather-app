@@ -5,7 +5,7 @@ const api = {
 };
 
 function App() {
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('Sweden');
     const [country, setCountry] = useState(false);
     const [weather, setWeather] = useState(false);
     const [forecast, setForecast] = useState(false);
@@ -19,7 +19,7 @@ function App() {
             .then(result => {
                 setQuery('');
 
-                if(result.cod === "404") return setCountry(false);
+                // if(result.cod === "404") return setCountry(false);
                 const country = {
                     name: result.city.name,
                     country: result.city.country,
@@ -33,10 +33,24 @@ function App() {
                     temp: item.main.temp_max
                 }));
 
-                setWeather(weather[0]);
-                setForecast(weather.filter((e,i) => i % 8 === 7));
+                const output = weather.reduce((acc, curr, idx, arr) => {
+                    if(new Date(arr[--idx]?.date).toLocaleDateString() != new Date(arr[++idx]?.date).toLocaleDateString()) acc.push([]);
+                    acc[acc.length - 1].push(curr);
+                    return acc;
+                }, []);
+
+                output.shift();
+                output.pop();
+                console.log(output);
+
+                setWeather(weather.shift());
+                setForecast(output);
                 setCountry(country);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
             });
+            
         }
     }
 
@@ -90,16 +104,9 @@ function App() {
                             <div className="container">
                                 {forecast.map((item, index) => {
                                     return  <div className="day one" key={index}> 
-                                                <div className='date'>
-                                                {item.date} 
-                                                </div>
-                                                <div className={item.type}></div>
-                                                <div>
-                                                {item.type} 
-                                                </div>
-                                                <div className='temp'>
-                                                {Math.round(item.temp * 10) / 10}°C
-                                                </div>      
+                                                {item.map(elem => {
+                                                    return elem.date
+                                                })}
                                             </div>
                                 })}
                             </div>
@@ -121,3 +128,26 @@ function App() {
 }
 
 export default App;
+
+{/* <div className='date'>
+{item.date} 
+</div>
+<div className={item.type}></div>
+<div>
+{item.type} 
+</div>
+<div className='temp'>
+{Math.round(item.temp * 10) / 10}°C
+</div>       */}
+
+
+// let z = data.timezone/3600
+// let tzArr = z.toString().split('');
+// tzArr.push(':00')
+// if(tzArr.indexOf(':')<3){
+// tzArr.splice(tzArr[0] === '-' ? 1 : 0, 0, '0')
+// } 
+// if (tzArr.indexOf('-')=== -1){
+// tzArr.unshift('+')
+// }
+// setTimezone(tzArr.join(''))
