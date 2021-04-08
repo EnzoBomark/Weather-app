@@ -21,20 +21,21 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        fetch("https://api.ip2loc.com/Bn8PS400MySWNFH8JQ3G2gtHLwsrZdAB/detect")
-        .then(response => response.json())
-        .then(response => this.setState({query: `${response.location.country.subdivision}, ${response.location.country.alpha_2}`}))
+        //Add when deploying//
+        // fetch("https://api.ip2loc.com/Bn8PS400MySWNFH8JQ3G2gtHLwsrZdAB/detect")
+        // .then(response => response.json())
+        // .then(response => this.setState({query: `${response.location.country.subdivision}, ${response.location.country.alpha_2}`}))
+
+        this.setState({query: 'Stockholm County, SE'});
     }
 
     search = e => {
-        if(e.key === "Enter" && this.query !== ''){
+        if(e.key === "Enter" && this.state.query !== ''){
             // fetch weather and forecast data
             fetch(`${this.state.api.base}forecast?q=${this.state.query}&units=metric&APPID=${this.state.api.key}`)
             .then(res => res.json())
             .then(result => {
                 this.setState({query: ''});
-
-                console.log(result);
 
                 const country = {
                     name: result.city.name,
@@ -57,6 +58,7 @@ export default class App extends Component {
                     return acc;
                 }, []);
 
+                output.pop();
                 output.shift();
 
                 this.setState({weather: weather.shift()});
@@ -92,6 +94,7 @@ export default class App extends Component {
                         onChange={e => this.setState({query: e.target.value})}
                         value={this.state.query}
                         onKeyPress={this.search}
+                        autoFocus
                         />
                     </div>
 
