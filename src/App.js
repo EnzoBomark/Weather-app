@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+import Forecast from "./components/Forecast"
+import Weather from "./components/Weather"
+import Country from "./components/Country"
+import StartComp from "./components/StartComp"
+
 const api = {
     key: "c8cde683f491660dd70e5ceef4f25741",
     base: "https://api.openweathermap.org/data/2.5/",
 };
+    
+// const getPos = () => {
+//     fetch("https://api.ip2loc.com/Bn8PS400MySWNFH8JQ3G2gtHLwsrZdAB/detect")
+//     .then(response => response.json())
+//     .then(response => { 
+//         console.log(response);
+//         if (response.success) return `${response.location.country.subdivision}, ${response.location.country.alpha_2}`
+//     });
+// }
+class App extends Component {
 
-function App() {
-    const [query, setQuery] = useState('Sweden');
-    const [country, setCountry] = useState(false);
-    const [weather, setWeather] = useState(false);
-    const [forecast, setForecast] = useState(false);
+    // const [query, setQuery] = useState('');
+    // const [country, setCountry] = useState(false);
+    // const [weather, setWeather] = useState(false);
+    // const [forecast, setForecast] = useState(false);
 
-    const search = e => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: '',
+            country: false,
+            weather: false,
+            forecast: false,
+        };
+
+    search(e){
         if(e.key === "Enter" && query !== ''){
             
             // fetch weather and forecast data
@@ -19,7 +42,8 @@ function App() {
             .then(result => {
                 setQuery('');
 
-                // if(result.cod === "404") return setCountry(false);
+                console.log(result);
+
                 const country = {
                     name: result.city.name,
                     country: result.city.country,
@@ -30,7 +54,9 @@ function App() {
                 const weather = result.list.map(item => ({
                     date: item.dt_txt,
                     type: item.weather[0].main,
-                    temp: item.main.temp_max
+                    temp: item.main.temp,
+                    humid: item.main.humidity,
+                    wind: item.wind.speed
                 }));
 
                 const output = weather.reduce((acc, curr, idx, arr) => {
@@ -40,8 +66,6 @@ function App() {
                 }, []);
 
                 output.shift();
-                output.pop();
-                console.log(output);
 
                 setWeather(weather.shift());
                 setForecast(output);
@@ -50,21 +74,27 @@ function App() {
             .catch((error) => {
                 console.error('Error:', error);
             });
-            
         }
     }
 
     // Return true when the sun is up
-    const newCurrentTime = (result) => {
+    newCurrentTime(result){
         const timezone = result.timezone/3600, 
-              sunrise = result.sunrise * 1000, 
-              sunset = result.sunset * 1000;
+            sunrise = result.sunrise * 1000, 
+            sunset = result.sunset * 1000;
 
         const currentTime = new Date().getUTCHours() + timezone;
         const sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
         const sunsetUtc = new Date(sunset).getUTCHours() + timezone;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
+}
+function App() {
+
+
+
+
+
 
     return (
         <div className={(country) ? (newCurrentTime(country) ? 'app day': 'app night') : 'app'}>
@@ -80,47 +110,19 @@ function App() {
                 </div>
 
                 { country &&
-                    <div>
-                        <div>
-                            <div className="location-box">
-                                <div className="location">{country.name}, {country.country}</div>
-                            </div>
-                        </div>
+                    <>
+                        <Country country={country}/>
 
-                        <div className="weather-box">
-                            <div className="container">
-                                <div className={weather.type}></div>
-                                <div className="temp">
-                                    {Math.round(weather.temp * 10) / 10}°C
-                                </div>
-                                <div className="weather">
-                                    {weather.type}
-                                </div>
-                                <div className="date">{new Date().toDateString()}</div>
-                            </div>
-                        </div>
+                        <Weather weather={weather}/>
 
-                        <div className="forecast">
-                            <div className="container">
-                                {forecast.map((item, index) => {
-                                    return  <div className="day one" key={index}> 
-                                                {item.map(elem => {
-                                                    return elem.date
-                                                })}
-                                            </div>
-                                })}
-                            </div>
-                        </div>
-                    </div>
+                        <Forecast forecast={forecast}/>
+                    </>
                 }
 
                 { country == false && 
-                    <div className="appContainer">
-                        <div className="date">{new Date().toDateString()}</div>
-                        <h1 className="title">Weather App</h1>
-                        <h2>Enter a country, city or state</h2>
-                        <p>The app will display the current weather, 5 day forecast and day/night cycle</p>
-                    </div>
+                    <>
+                        <StartComp/>
+                    </>
                 }
             </main>
         </div>
@@ -128,18 +130,6 @@ function App() {
 }
 
 export default App;
-
-{/* <div className='date'>
-{item.date} 
-</div>
-<div className={item.type}></div>
-<div>
-{item.type} 
-</div>
-<div className='temp'>
-{Math.round(item.temp * 10) / 10}°C
-</div>       */}
-
 
 // let z = data.timezone/3600
 // let tzArr = z.toString().split('');

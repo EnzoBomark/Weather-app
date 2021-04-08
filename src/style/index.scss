@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 $darkBackground: #070f1d;
 $lightBackground: #a9c9ff;
 $lightText: #ffffff;
@@ -138,7 +142,7 @@ $snowNight: "../images/night-snow.svg";
         flex-wrap: wrap;
 
         .day{
-          @include flexBox(center, space-between, column);
+          // @include flexBox(center, space-between, column);
           @include glassTexture();
           margin: 30px;
           width: 250px;
