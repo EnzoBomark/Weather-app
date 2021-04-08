@@ -17,23 +17,13 @@ const api = {
 //         if (response.success) return `${response.location.country.subdivision}, ${response.location.country.alpha_2}`
 //     });
 // }
-class App extends Component {
+function App() {
+    const [query, setQuery] = useState();
+    const [country, setCountry] = useState(false);
+    const [weather, setWeather] = useState(false);
+    const [forecast, setForecast] = useState(false);
 
-    // const [query, setQuery] = useState('');
-    // const [country, setCountry] = useState(false);
-    // const [weather, setWeather] = useState(false);
-    // const [forecast, setForecast] = useState(false);
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: '',
-            country: false,
-            weather: false,
-            forecast: false,
-        };
-
-    search(e){
+    const search = e => {
         if(e.key === "Enter" && query !== ''){
             
             // fetch weather and forecast data
@@ -78,23 +68,16 @@ class App extends Component {
     }
 
     // Return true when the sun is up
-    newCurrentTime(result){
+    const newCurrentTime = (result) => {
         const timezone = result.timezone/3600, 
-            sunrise = result.sunrise * 1000, 
-            sunset = result.sunset * 1000;
+              sunrise = result.sunrise * 1000, 
+              sunset = result.sunset * 1000;
 
         const currentTime = new Date().getUTCHours() + timezone;
         const sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
         const sunsetUtc = new Date(sunset).getUTCHours() + timezone;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
-}
-function App() {
-
-
-
-
-
 
     return (
         <div className={(country) ? (newCurrentTime(country) ? 'app day': 'app night') : 'app'}>
@@ -141,3 +124,22 @@ export default App;
 // tzArr.unshift('+')
 // }
 // setTimezone(tzArr.join(''))
+
+
+// import React, { Component } from 'react'
+
+// export default class App extends Component {
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       name: 'Constructor Method'
+//     }
+//   }
+//   render() {
+//     return (
+//       <div>
+//        <p> This is a {this.state.name}</p>
+//       </div>
+//     )
+//   }
+// }
