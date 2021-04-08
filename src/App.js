@@ -1,36 +1,38 @@
-import React, { useState, Component } from "react";
+import React, { Component } from 'react'
 import Forecast from "./components/Forecast"
 import Weather from "./components/Weather"
 import Country from "./components/Country"
 import StartComp from "./components/StartComp"
-
-const api = {
-    key: "c8cde683f491660dd70e5ceef4f25741",
-    base: "https://api.openweathermap.org/data/2.5/",
-};
+export default class App extends Component {
     
-// const getPos = () => {
-//     fetch("https://api.ip2loc.com/Bn8PS400MySWNFH8JQ3G2gtHLwsrZdAB/detect")
-//     .then(response => response.json())
-//     .then(response => { 
-//         console.log(response);
-//         if (response.success) return `${response.location.country.subdivision}, ${response.location.country.alpha_2}`
-//     });
-// }
-function App() {
-    const [query, setQuery] = useState();
-    const [country, setCountry] = useState(false);
-    const [weather, setWeather] = useState(false);
-    const [forecast, setForecast] = useState(false);
+    constructor(props){
+        super(props)
+    
+        this.state = {
+        query: '',
+        country: false,
+        weather: false,
+        forecast: false,
+        api: {
+            key: "c8cde683f491660dd70e5ceef4f25741",
+            base: "https://api.openweathermap.org/data/2.5/",
+            }
+        }
+    }
 
-    const search = e => {
-        if(e.key === "Enter" && query !== ''){
-            
+    componentDidMount() {
+        fetch("https://api.ip2loc.com/Bn8PS400MySWNFH8JQ3G2gtHLwsrZdAB/detect")
+        .then(response => response.json())
+        .then(response => this.setState({query: `${response.location.country.subdivision}, ${response.location.country.alpha_2}`}))
+    }
+
+    search = e => {
+        if(e.key === "Enter" && this.query !== ''){
             // fetch weather and forecast data
-            fetch(`${api.base}forecast?q=${query}&units=metric&APPID=${api.key}`)
+            fetch(`${this.state.api.base}forecast?q=${this.state.query}&units=metric&APPID=${this.state.api.key}`)
             .then(res => res.json())
             .then(result => {
-                setQuery('');
+                this.setState({query: ''});
 
                 console.log(result);
 
@@ -57,9 +59,9 @@ function App() {
 
                 output.shift();
 
-                setWeather(weather.shift());
-                setForecast(output);
-                setCountry(country);
+                this.setState({weather: weather.shift()});
+                this.setState({forecast: output});
+                this.setState({country: country});
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -67,52 +69,52 @@ function App() {
         }
     }
 
-    // Return true when the sun is up
-    const newCurrentTime = (result) => {
+     // Return true when the sun is up
+    newCurrentTime = (result) => {
         const timezone = result.timezone/3600, 
-              sunrise = result.sunrise * 1000, 
-              sunset = result.sunset * 1000;
+            sunrise = result.sunrise * 1000, 
+            sunset = result.sunset * 1000;
 
         const currentTime = new Date().getUTCHours() + timezone;
         const sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
         const sunsetUtc = new Date(sunset).getUTCHours() + timezone;
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
+  
+    render() {
+        return (
+            <div className={(this.state.country) ? (this.newCurrentTime(this.state.country) ? 'app day': 'app night') : 'app'}>
+                <main>
+                    <div className="search-box">
+                        <input type="text"
+                        className="search-bar" 
+                        placeholder="Search..."
+                        onChange={e => this.setState({query: e.target.value})}
+                        value={this.state.query}
+                        onKeyPress={this.search}
+                        />
+                    </div>
 
-    return (
-        <div className={(country) ? (newCurrentTime(country) ? 'app day': 'app night') : 'app'}>
-            <main>
-                <div className="search-box">
-                    <input type="text"
-                    className="search-bar" 
-                    placeholder="Search..."
-                    onChange={e => setQuery(e.target.value)}
-                    value={query}
-                    onKeyPress={search}
-                    />
-                </div>
+                    { this.state.country &&
+                        <>
+                            <Country country={this.state.country}/>
 
-                { country &&
-                    <>
-                        <Country country={country}/>
+                            <Weather weather={this.state.weather}/>
 
-                        <Weather weather={weather}/>
+                            <Forecast forecast={this.state.forecast}/>
+                        </>
+                    }
 
-                        <Forecast forecast={forecast}/>
-                    </>
-                }
-
-                { country == false && 
-                    <>
-                        <StartComp/>
-                    </>
-                }
-            </main>
-        </div>
-    )
+                    { this.state.country == false && 
+                        <>
+                            <StartComp/>
+                        </>
+                    }
+                </main>
+            </div>
+        )
+     }
 }
-
-export default App;
 
 // let z = data.timezone/3600
 // let tzArr = z.toString().split('');
@@ -124,22 +126,3 @@ export default App;
 // tzArr.unshift('+')
 // }
 // setTimezone(tzArr.join(''))
-
-
-// import React, { Component } from 'react'
-
-// export default class App extends Component {
-//   constructor(props){
-//     super(props)
-//     this.state = {
-//       name: 'Constructor Method'
-//     }
-//   }
-//   render() {
-//     return (
-//       <div>
-//        <p> This is a {this.state.name}</p>
-//       </div>
-//     )
-//   }
-// }
