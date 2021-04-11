@@ -12,8 +12,10 @@ export default function Weather({ weather }) {
                     {weather.type}
                 </div>
                 <div className="date">{new Date().toDateString()}</div>
-                <div className="date">{weather.humid} %</div>
-                <div className="date">{weather.wind} m/s</div>
+                <div className="flex">
+                    <div className="date mr-2">{weather.wind} m/s</div>
+                    <div className="date ml-2">{weather.humid} %</div>
+                </div>
             </div>
         </div>
     )

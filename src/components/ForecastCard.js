@@ -29,9 +29,14 @@ export default function ForecastCard({elem, idx}) {
                         </div>
                         <div className='temp'>
                         {Math.round(elem.temp * 10) / 10}°C
-                        </div>      
+                        </div>    
+                      
                     </div>
                 )}
+                                 
+                <div>
+                    {elem[0].sunHours?.sunset}
+                </div>  
             </div>
         </>
     )

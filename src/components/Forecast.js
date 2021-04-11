@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import ForecastCard from "./ForecastCard"
 
 export default function Forecast({ forecast }) {
-
-
     return (
         <div className="forecast">
             <div className="container">
