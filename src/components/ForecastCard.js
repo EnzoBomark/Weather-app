@@ -33,9 +33,11 @@ export default function ForecastCard({elem, idx}) {
                       
                     </div>
                 )}
-                                 
+
+                {/* Add extra info box*/}
                 <div>
-                    {elem[0].sunHours?.sunset}
+                    {elem[0].sundata?.sunrise}
+                    {elem[0].sundata?.sunset}
                 </div>  
             </div>
         </>
