@@ -16,6 +16,11 @@ export default function Weather({ weather }) {
                     <div className="date mr-2">{weather.wind} m/s</div>
                     <div className="date ml-2">{weather.humid} %</div>
                 </div>
+
+                <div>
+                    {weather.sundata?.sunrise}
+                    {weather.sundata?.sunset}
+                </div>  
             </div>
         </div>
     )
