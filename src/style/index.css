@@ -559,4 +559,436 @@
   width: 100px;
   height: 100px;
 }
+
+#progress-container {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+svg {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  display: block;
+  width: 140px;
+  height: 140px;
+}
+
+svg circle {
+  fill: none;
+  stroke-width: 12px;
+}
+
+svg circle:nth-child(1) {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+svg circle:nth-child(2) {
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 402.124;
+  stroke-dashoffset: 402.124;
+  -webkit-transition: all 150ms ease-out;
+  transition: all 150ms ease-out;
+}
+
+svg[percent="1"] circle:nth-child(2) {
+  stroke-dashoffset: 398.10276;
+}
+
+svg[percent="2"] circle:nth-child(2) {
+  stroke-dashoffset: 394.08152;
+}
+
+svg[percent="3"] circle:nth-child(2) {
+  stroke-dashoffset: 390.06028;
+}
+
+svg[percent="4"] circle:nth-child(2) {
+  stroke-dashoffset: 386.03904;
+}
+
+svg[percent="5"] circle:nth-child(2) {
+  stroke-dashoffset: 382.0178;
+}
+
+svg[percent="6"] circle:nth-child(2) {
+  stroke-dashoffset: 377.99656;
+}
+
+svg[percent="7"] circle:nth-child(2) {
+  stroke-dashoffset: 373.97532;
+}
+
+svg[percent="8"] circle:nth-child(2) {
+  stroke-dashoffset: 369.95408;
+}
+
+svg[percent="9"] circle:nth-child(2) {
+  stroke-dashoffset: 365.93284;
+}
+
+svg[percent="10"] circle:nth-child(2) {
+  stroke-dashoffset: 361.9116;
+}
+
+svg[percent="11"] circle:nth-child(2) {
+  stroke-dashoffset: 357.89036;
+}
+
+svg[percent="12"] circle:nth-child(2) {
+  stroke-dashoffset: 353.86912;
+}
+
+svg[percent="13"] circle:nth-child(2) {
+  stroke-dashoffset: 349.84788;
+}
+
+svg[percent="14"] circle:nth-child(2) {
+  stroke-dashoffset: 345.82664;
+}
+
+svg[percent="15"] circle:nth-child(2) {
+  stroke-dashoffset: 341.8054;
+}
+
+svg[percent="16"] circle:nth-child(2) {
+  stroke-dashoffset: 337.78416;
+}
+
+svg[percent="17"] circle:nth-child(2) {
+  stroke-dashoffset: 333.76292;
+}
+
+svg[percent="18"] circle:nth-child(2) {
+  stroke-dashoffset: 329.74168;
+}
+
+svg[percent="19"] circle:nth-child(2) {
+  stroke-dashoffset: 325.72044;
+}
+
+svg[percent="20"] circle:nth-child(2) {
+  stroke-dashoffset: 321.6992;
+}
+
+svg[percent="21"] circle:nth-child(2) {
+  stroke-dashoffset: 317.67796;
+}
+
+svg[percent="22"] circle:nth-child(2) {
+  stroke-dashoffset: 313.65672;
+}
+
+svg[percent="23"] circle:nth-child(2) {
+  stroke-dashoffset: 309.63548;
+}
+
+svg[percent="24"] circle:nth-child(2) {
+  stroke-dashoffset: 305.61424;
+}
+
+svg[percent="25"] circle:nth-child(2) {
+  stroke-dashoffset: 301.593;
+}
+
+svg[percent="26"] circle:nth-child(2) {
+  stroke-dashoffset: 297.57176;
+}
+
+svg[percent="27"] circle:nth-child(2) {
+  stroke-dashoffset: 293.55052;
+}
+
+svg[percent="28"] circle:nth-child(2) {
+  stroke-dashoffset: 289.52928;
+}
+
+svg[percent="29"] circle:nth-child(2) {
+  stroke-dashoffset: 285.50804;
+}
+
+svg[percent="30"] circle:nth-child(2) {
+  stroke-dashoffset: 281.4868;
+}
+
+svg[percent="31"] circle:nth-child(2) {
+  stroke-dashoffset: 277.46556;
+}
+
+svg[percent="32"] circle:nth-child(2) {
+  stroke-dashoffset: 273.44432;
+}
+
+svg[percent="33"] circle:nth-child(2) {
+  stroke-dashoffset: 269.42308;
+}
+
+svg[percent="34"] circle:nth-child(2) {
+  stroke-dashoffset: 265.40184;
+}
+
+svg[percent="35"] circle:nth-child(2) {
+  stroke-dashoffset: 261.3806;
+}
+
+svg[percent="36"] circle:nth-child(2) {
+  stroke-dashoffset: 257.35936;
+}
+
+svg[percent="37"] circle:nth-child(2) {
+  stroke-dashoffset: 253.33812;
+}
+
+svg[percent="38"] circle:nth-child(2) {
+  stroke-dashoffset: 249.31688;
+}
+
+svg[percent="39"] circle:nth-child(2) {
+  stroke-dashoffset: 245.29564;
+}
+
+svg[percent="40"] circle:nth-child(2) {
+  stroke-dashoffset: 241.2744;
+}
+
+svg[percent="41"] circle:nth-child(2) {
+  stroke-dashoffset: 237.25316;
+}
+
+svg[percent="42"] circle:nth-child(2) {
+  stroke-dashoffset: 233.23192;
+}
+
+svg[percent="43"] circle:nth-child(2) {
+  stroke-dashoffset: 229.21068;
+}
+
+svg[percent="44"] circle:nth-child(2) {
+  stroke-dashoffset: 225.18944;
+}
+
+svg[percent="45"] circle:nth-child(2) {
+  stroke-dashoffset: 221.1682;
+}
+
+svg[percent="46"] circle:nth-child(2) {
+  stroke-dashoffset: 217.14696;
+}
+
+svg[percent="47"] circle:nth-child(2) {
+  stroke-dashoffset: 213.12572;
+}
+
+svg[percent="48"] circle:nth-child(2) {
+  stroke-dashoffset: 209.10448;
+}
+
+svg[percent="49"] circle:nth-child(2) {
+  stroke-dashoffset: 205.08324;
+}
+
+svg[percent="50"] circle:nth-child(2) {
+  stroke-dashoffset: 201.062;
+}
+
+svg[percent="51"] circle:nth-child(2) {
+  stroke-dashoffset: 197.04076;
+}
+
+svg[percent="52"] circle:nth-child(2) {
+  stroke-dashoffset: 193.01952;
+}
+
+svg[percent="53"] circle:nth-child(2) {
+  stroke-dashoffset: 188.99828;
+}
+
+svg[percent="54"] circle:nth-child(2) {
+  stroke-dashoffset: 184.97704;
+}
+
+svg[percent="55"] circle:nth-child(2) {
+  stroke-dashoffset: 180.9558;
+}
+
+svg[percent="56"] circle:nth-child(2) {
+  stroke-dashoffset: 176.93456;
+}
+
+svg[percent="57"] circle:nth-child(2) {
+  stroke-dashoffset: 172.91332;
+}
+
+svg[percent="58"] circle:nth-child(2) {
+  stroke-dashoffset: 168.89208;
+}
+
+svg[percent="59"] circle:nth-child(2) {
+  stroke-dashoffset: 164.87084;
+}
+
+svg[percent="60"] circle:nth-child(2) {
+  stroke-dashoffset: 160.8496;
+}
+
+svg[percent="61"] circle:nth-child(2) {
+  stroke-dashoffset: 156.82836;
+}
+
+svg[percent="62"] circle:nth-child(2) {
+  stroke-dashoffset: 152.80712;
+}
+
+svg[percent="63"] circle:nth-child(2) {
+  stroke-dashoffset: 148.78588;
+}
+
+svg[percent="64"] circle:nth-child(2) {
+  stroke-dashoffset: 144.76464;
+}
+
+svg[percent="65"] circle:nth-child(2) {
+  stroke-dashoffset: 140.7434;
+}
+
+svg[percent="66"] circle:nth-child(2) {
+  stroke-dashoffset: 136.72216;
+}
+
+svg[percent="67"] circle:nth-child(2) {
+  stroke-dashoffset: 132.70092;
+}
+
+svg[percent="68"] circle:nth-child(2) {
+  stroke-dashoffset: 128.67968;
+}
+
+svg[percent="69"] circle:nth-child(2) {
+  stroke-dashoffset: 124.65844;
+}
+
+svg[percent="70"] circle:nth-child(2) {
+  stroke-dashoffset: 120.6372;
+}
+
+svg[percent="71"] circle:nth-child(2) {
+  stroke-dashoffset: 116.61596;
+}
+
+svg[percent="72"] circle:nth-child(2) {
+  stroke-dashoffset: 112.59472;
+}
+
+svg[percent="73"] circle:nth-child(2) {
+  stroke-dashoffset: 108.57348;
+}
+
+svg[percent="74"] circle:nth-child(2) {
+  stroke-dashoffset: 104.55224;
+}
+
+svg[percent="75"] circle:nth-child(2) {
+  stroke-dashoffset: 100.531;
+}
+
+svg[percent="76"] circle:nth-child(2) {
+  stroke-dashoffset: 96.50976;
+}
+
+svg[percent="77"] circle:nth-child(2) {
+  stroke-dashoffset: 92.48852;
+}
+
+svg[percent="78"] circle:nth-child(2) {
+  stroke-dashoffset: 88.46728;
+}
+
+svg[percent="79"] circle:nth-child(2) {
+  stroke-dashoffset: 84.44604;
+}
+
+svg[percent="80"] circle:nth-child(2) {
+  stroke-dashoffset: 80.4248;
+}
+
+svg[percent="81"] circle:nth-child(2) {
+  stroke-dashoffset: 76.40356;
+}
+
+svg[percent="82"] circle:nth-child(2) {
+  stroke-dashoffset: 72.38232;
+}
+
+svg[percent="83"] circle:nth-child(2) {
+  stroke-dashoffset: 68.36108;
+}
+
+svg[percent="84"] circle:nth-child(2) {
+  stroke-dashoffset: 64.33984;
+}
+
+svg[percent="85"] circle:nth-child(2) {
+  stroke-dashoffset: 60.3186;
+}
+
+svg[percent="86"] circle:nth-child(2) {
+  stroke-dashoffset: 56.29736;
+}
+
+svg[percent="87"] circle:nth-child(2) {
+  stroke-dashoffset: 52.27612;
+}
+
+svg[percent="88"] circle:nth-child(2) {
+  stroke-dashoffset: 48.25488;
+}
+
+svg[percent="89"] circle:nth-child(2) {
+  stroke-dashoffset: 44.23364;
+}
+
+svg[percent="90"] circle:nth-child(2) {
+  stroke-dashoffset: 40.2124;
+}
+
+svg[percent="91"] circle:nth-child(2) {
+  stroke-dashoffset: 36.19116;
+}
+
+svg[percent="92"] circle:nth-child(2) {
+  stroke-dashoffset: 32.16992;
+}
+
+svg[percent="93"] circle:nth-child(2) {
+  stroke-dashoffset: 28.14868;
+}
+
+svg[percent="94"] circle:nth-child(2) {
+  stroke-dashoffset: 24.12744;
+}
+
+svg[percent="95"] circle:nth-child(2) {
+  stroke-dashoffset: 20.1062;
+}
+
+svg[percent="96"] circle:nth-child(2) {
+  stroke-dashoffset: 16.08496;
+}
+
+svg[percent="97"] circle:nth-child(2) {
+  stroke-dashoffset: 12.06372;
+}
+
+svg[percent="98"] circle:nth-child(2) {
+  stroke-dashoffset: 8.04248;
+}
+
+svg[percent="99"] circle:nth-child(2) {
+  stroke-dashoffset: 4.02124;
+}
+
+svg[percent="100"] circle:nth-child(2) {
+  stroke-dashoffset: 0;
+}
 /*# sourceMappingURL=index.css.map */

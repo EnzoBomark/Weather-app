@@ -232,7 +232,41 @@ $snowNight: "../images/night-snow.svg";
   @include weather($darkBackground, $lightText, $darkBox, $cloudsNight, $rainNight, $clearNight, $snowNight);
 }
 
+#progress-container{
+  transition: all 0.5s ease;
+}
 
+svg {
+  transition: all 0.5s ease;
+
+	display: block;
+	width: 140px;
+	height: 140px;
+	circle {
+		fill: none;
+		stroke-width: 12px;
+		&:nth-child(1) {
+			stroke: rgba(white, .2);;
+		}
+		&:nth-child(2) {
+			stroke: white;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-dasharray: 402.124;
+			stroke-dashoffset: 402.124;
+			transition: all 150ms ease-out;
+		}
+	}
+	@for $i from 1 through 100 {
+		&[percent="#{$i}"] {
+			circle {
+				&:nth-child(2) {
+					stroke-dashoffset: #{402.124 - (402.124 * 	($i/100))};
+				}
+			}
+		}
+	}
+}
 
 
 

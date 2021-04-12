@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ForecastCard({elem, idx}) {
+export default function ForecastCard({elem, unit}) {
     const [toggleState, setToggleState] = useState(elem[0].date);
     const active = (date) => setToggleState(date);
 
@@ -28,8 +28,14 @@ export default function ForecastCard({elem, idx}) {
                         {elem.type} 
                         </div>
                         <div className='temp'>
-                        {Math.round(elem.temp * 10) / 10}°C
+                        {(unit) ? `${Math.round(elem.temp * 10) / 10}°C` : `${Math.round((elem.temp * 9/5 + 32) * 10) / 10}°F`}
                         </div>    
+
+                        <div>
+                            {(unit) ? `${elem.wind} m/s` : `${Math.round(elem.wind * 2.2369362920544 * 100) / 100} mph`}
+                        </div>  
+                        
+                        <div>{elem.humid} %</div>
                       
                     </div>
                 )}

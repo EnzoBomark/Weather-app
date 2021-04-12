@@ -19,6 +19,7 @@ function App() {
     const [country, setCountry] = useState(false);
     const [weather, setWeather] = useState(false);
     const [forecast, setForecast] = useState(false);
+    const [unit, setUnit] = useState(true);
     
     useEffect(() => {
         // Add when deploying//
@@ -26,7 +27,7 @@ function App() {
         //     fetch(`${positionstack_api.base}?access_key=${positionstack_api.key}&query=${position.coords.latitude},${position.coords.longitude}`)
         //     .then(response => response.json())
         //     .then(response => setQuery(`${response.data[0].county}, ${response.data[0].country_code}`))
-        //   });
+        //});
 
         setQuery('Stockholm, SWE');
     }, []);
@@ -161,7 +162,6 @@ function App() {
         const hours = floor(UT),
             minutes = Math.round(60 * (UT - hours));
         const result = new Date(Date.UTC(year, month - 1, day, hours + timezone, minutes)).toGMTString()
-        console.log(result);
         return result;
     }
     
@@ -187,15 +187,17 @@ function App() {
                     value={query}
                     onKeyPress={search}
                     />
+
+                    <div onClick={() => setUnit(!unit)}>Unit</div>
                 </div>
 
                 {   country &&
                     <>
                         <Country country={country}/>
 
-                        <Weather weather={weather}/>
+                        <Weather weather={weather} unit={unit} country={country}/>
 
-                        <Forecast forecast={forecast}/>
+                        <Forecast forecast={forecast} unit={unit}/>
                     </>
                 }
 
