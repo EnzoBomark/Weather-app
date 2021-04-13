@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-$darkBackground: #070f1d;
-$lightBackground: #a9c9ff;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+$darkBackground: #341d5a;
+$lightBackground: #99bdf2;
 $lightText: #ffffff;
-$darkText: #070F1D;
+$darkText: #172131;
 $ligtBox: #A0BBE9;
 $darkBox: #111655;
 $white: #ffffff;
@@ -14,22 +16,22 @@ $largeText: 72px;
 $normalText: 52px;
 $smallText: 30px;
 
-$cloudsDay: "../images/cloud.svg";
-$rainDay: "../images/rain.svg";
-$clearDay: "../images/sun.svg";
-$snowDay: "../images/snow.svg";
+$cloudsDay: "../images/sun.png";
+$rainDay: "../images/rain.png";
+$clearDay: "../images/sun.png";
+$snowDay: "../images/snow.png";
 
-$cloudsNight: "../images/night-cloud.svg";
-$rainNight: "../images/night-rain.svg";
-$clearNight: "../images/night-moon.svg";
-$snowNight: "../images/night-snow.svg";
+$cloudsNight: "../images/night-cloud.png";
+$rainNight: "../images/night-rain.png";
+$clearNight: "../images/night-moon.png";
+$snowNight: "../images/night-snow.png";
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-weight:600;
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight:700;
+  font-family: 'Nunito', sans-serif;
 }
 
 @mixin flexBox($align, $justify, $dir) {
@@ -43,7 +45,7 @@ $snowNight: "../images/night-snow.svg";
   border-bottom: 1px solid #f5f5f585;
     border-left: 1px solid #f5f5f51f;
     border-right: 1px solid #ffffff28;
-    background: linear-gradient(30deg, #b5caee00 0%, #ffffff1a 100%);
+    background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
     border-radius: 20px;
     padding: 20px 30px;
 }
@@ -52,12 +54,15 @@ $snowNight: "../images/night-snow.svg";
   background-image: url($url);
   width: $size;
   height: $size;
+  background-size: $size;
+  background-repeat: no-repeat;
 }
 
 @mixin weather($backgroundColor, $textColor, $boxColor, $clouds, $rain, $clear, $snow) {
 
   main{
     @include flexBox(center, flex-start, column);
+    padding: 0 20px;
   }
  
   .search-box{
@@ -73,7 +78,7 @@ $snowNight: "../images/night-snow.svg";
     }
   }
 
-  background: linear-gradient(180deg, #ffffff00 0%, #1129ff5e 100%);
+  background: linear-gradient(180deg, #ffffff00 0%, #12168765 100%);
   background-color: $backgroundColor;
 
   .location-box{
@@ -90,6 +95,8 @@ $snowNight: "../images/night-snow.svg";
 
   .weather-box{
     @include flexBox(center, center, column);
+    max-width: 500px;
+    width: 100%;
 
     .container{
       @include flexBox(center, center, column);
@@ -116,19 +123,19 @@ $snowNight: "../images/night-snow.svg";
       }
         
       .Clouds{
-        @include img($clouds, 155px);
+        @include img($clouds, 256px);
       }
 
       .Rain{
-        @include img($rain, 155px);
+        @include img($rain, 256px);
       }
 
       .Clear{
-        @include img($clear, 155px);
+        @include img($clear, 256px);
       }
 
       .Snow{
-        @include img($snow, 155px);
+        @include img($snow, 256px);
       }
 
     }
@@ -177,6 +184,50 @@ $snowNight: "../images/night-snow.svg";
           .Snow{
             @include img($snow, 100px);
           }
+      }
+    }
+  }
+
+  .progress-dot{
+    background-color: $textColor;
+    width: 8px;
+    height: 8px;
+    margin-bottom: 8px;
+    border-radius: 9999px;
+  }
+
+  #progress-container{
+    transition: all 0.5s ease;
+  }
+  
+  svg {
+    transition: all 0.5s ease;
+  
+    display: block;
+    width: 140px;
+    height: 140px;
+    circle {
+      fill: none;
+      stroke-width: 12px;
+      &:nth-child(1) {
+        stroke: rgba($textColor, .2);;
+      }
+      &:nth-child(2) {
+        stroke: $textColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 402.124;
+        stroke-dashoffset: 402.124;
+        transition: all 150ms ease-out;
+      }
+    }
+    @for $i from 1 through 100 {
+      &[percent="#{$i}"] {
+        circle {
+          &:nth-child(2) {
+            stroke-dashoffset: #{402.124 - (402.124 * 	($i/100))};
+          }
+        }
       }
     }
   }
@@ -232,41 +283,7 @@ $snowNight: "../images/night-snow.svg";
   @include weather($darkBackground, $lightText, $darkBox, $cloudsNight, $rainNight, $clearNight, $snowNight);
 }
 
-#progress-container{
-  transition: all 0.5s ease;
-}
 
-svg {
-  transition: all 0.5s ease;
-
-	display: block;
-	width: 140px;
-	height: 140px;
-	circle {
-		fill: none;
-		stroke-width: 12px;
-		&:nth-child(1) {
-			stroke: rgba(white, .2);;
-		}
-		&:nth-child(2) {
-			stroke: white;
-			stroke-linecap: round;
-			stroke-linejoin: round;
-			stroke-dasharray: 402.124;
-			stroke-dashoffset: 402.124;
-			transition: all 150ms ease-out;
-		}
-	}
-	@for $i from 1 through 100 {
-		&[percent="#{$i}"] {
-			circle {
-				&:nth-child(2) {
-					stroke-dashoffset: #{402.124 - (402.124 * 	($i/100))};
-				}
-			}
-		}
-	}
-}
 
 
 

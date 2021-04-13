@@ -58,14 +58,23 @@ function App() {
                 wind: item.wind.speed,
             }));
 
+            weather[0].date = new Date().toLocaleDateString() + ' 00:00:00';
+            console.log(weather[0].date)
+
             weather.filter((e,i) => new Date(e.date).getHours() == 0 || i == 0)
-            .forEach(weather => weather.sundata = solar_events(new Date(weather.date), country.lat, country.lng, country.timezone/3600));
+            .forEach(weather => {
+                weather.sundata = solar_events(new Date(weather.date), country.lat, country.lng, country.timezone/3600)
+            });
+
             
             const output = weather.reduce((acc, curr, idx, arr) => {
                 if(new Date(arr[--idx]?.date).toLocaleDateString() != new Date(arr[++idx]?.date).toLocaleDateString()) acc.push([]);
                 acc[acc.length - 1].push(curr);
                 return acc;
             }, []);
+            
+            
+            // console.log( weather.filter((e,i) => new Date(e.date).getHours() == 0 || i == 0));
             
             output.pop();
             output.shift();
@@ -85,16 +94,21 @@ function App() {
               sunrise = result.sunrise * 1000, 
               sunset = result.sunset * 1000;
 
-        const currentTime = new Date().getUTCHours() + timezone;
-        const sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
-        const sunsetUtc = new Date(sunset).getUTCHours() + timezone;
+        let currentTime = new Date().getUTCHours() + timezone;
+        let sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
+        let sunsetUtc = new Date(sunset).getUTCHours() + timezone;
+        
+        if(currentTime >= 24) currentTime -= 24;
+        if(sunriseUtc >= 24) sunriseUtc -= 24;
+        if(sunsetUtc >= 24) sunsetUtc -= 24;
+
         return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
 
     const solar_event = (date, latitude, longitude, rising, zenith, timezone) => {
         const year = date.getUTCFullYear(),
             month = date.getUTCMonth() + 1,
-            day = date.getUTCDate() + 1;
+            day = date.getUTCDate();
 
         const floor = Math.floor,
             degtorad = (deg) => Math.PI * deg / 180,
@@ -112,7 +126,7 @@ function App() {
             N2 = floor((month + 9) / 12),
             N3 = (1 + floor((year - 4 * floor(year / 4) + 2) / 3)),
             N = N1 - (N2 * N3) + day - 30;
-    
+
         // Convert the longitude to hour value and calculate an approximate time
         const lngHour = longitude / 15,
             t = N + (((rising ? 6 : 18) - lngHour) / 24);
@@ -158,10 +172,10 @@ function App() {
         // Adjust back to UTC
         let UT = T - lngHour;
         UT = modpos(UT, 24);
-    
+
         const hours = floor(UT),
             minutes = Math.round(60 * (UT - hours));
-        const result = new Date(Date.UTC(year, month - 1, day, hours + timezone, minutes)).toGMTString()
+        const result = new Date(Date.UTC(year, month - 1, day, hours + timezone, minutes)).toUTCString().split(' ')[4];
         return result;
     }
     
@@ -172,8 +186,8 @@ function App() {
     const sunset = (date, latitude, longitude, timezone) => solar_event(date, latitude, longitude, false, zeniths, timezone);
     
     const solar_events = (date, latitude, longitude, timezone) => ({
-        'sunrise': `${new Date(sunrise(date, latitude, longitude, timezone)).getUTCHours()}:${new Date(sunrise(date, latitude, longitude, timezone)).getMinutes()}:00`,
-        'sunset':`${new Date(sunset(date, latitude, longitude, timezone)).getUTCHours()}:${new Date(sunset(date, latitude, longitude, timezone)).getMinutes()}:00`,
+        'sunrise': `${sunrise(date, latitude, longitude, timezone)}`,
+        'sunset': `${sunset(date, latitude, longitude, timezone)}`,
     });
 
     return (

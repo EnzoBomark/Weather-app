@@ -10,29 +10,26 @@ export default function Weather({ weather, unit, country }) {
         const progress = document.getElementById('progress');
         const progressContainer = document.getElementById('progress-container');
 
-        let preDay = parseInt(weather.sundata?.sunrise.replaceAll(':', ''));
-        let postDay = 240000 - parseInt(weather.sundata?.sunset.replaceAll(':', ''));
-        const dayLength = 1 - (preDay + postDay) / 240000;
+        let preDay = parseInt(weather.sundata?.sunrise);
+        let postDay = 24 - parseInt(weather.sundata?.sunset);
+        const dayLength = 1 - (preDay + postDay) / 24;
+
+        // console.log({
+        //     preDay, 
+        //     postDay, 
+        //     percent: Math.floor(dayLength * 100), 
+        //     circle: `rotate(${(preDay) * 15}deg)`, 
+        //     container: `rotate(${((24 - (new Date().getUTCHours() + country.timezone/3600)) * 15) - 90}deg)`
+        // });
 
         progress.setAttribute('percent', `${Math.floor(dayLength * 100)}`);
-        progress.style.transform = `rotate(${(preDay / 10000) * 15}deg)`;
+        progress.style.transform = `rotate(${preDay * 15}deg)`;
         progressContainer.style.transform = `rotate(${((24 - (new Date().getUTCHours() + country.timezone/3600)) * 15) - 90}deg)`;
     }
-
-
 
     return (
         <div className="weather-box">
             <div className="container">
-
-                <div className="w-2 h-2 rounded-lg bg-white mb-2"></div>
-                <div id="progress-container">
-                    <svg id='progress' percent='0' viewport='0 0 140 140'>
-                        <circle cx='70' cy='70' r='64'></circle>
-                        <circle cx='70' cy='70' r='64'></circle>
-                    </svg>
-                </div>
-
                 <div className={weather.type}></div>
                 <div className="temp">
                     {(unit) ? `${Math.round(weather.temp * 10) / 10}°C` : `${Math.round((weather.temp * 9/5 + 32) * 10) / 10}°F`}
@@ -47,10 +44,18 @@ export default function Weather({ weather, unit, country }) {
                     <div className="date ml-2">{weather.humid} %</div>
                 </div>
 
-                <div>
-                    {weather.sundata?.sunrise}
-                    {weather.sundata?.sunset}
+                <div className="w-2/5 flex justify-between">
+                    <div>{weather.sundata?.sunrise}</div>
+                    <div>{weather.sundata?.sunset}</div>
                 </div>  
+
+                <div className="progress-dot"></div>
+                <div id="progress-container">
+                    <svg id='progress' percent='0' viewport='0 0 140 140'>
+                        <circle cx='70' cy='70' r='64'></circle>
+                        <circle cx='70' cy='70' r='64'></circle>
+                    </svg>
+                </div>
             </div>
         </div>
     )

@@ -41,9 +41,9 @@ export default function ForecastCard({elem, unit}) {
                 )}
 
                 {/* Add extra info box*/}
-                <div>
-                    {elem[0].sundata?.sunrise}
-                    {elem[0].sundata?.sunset}
+                <div className="w-full flex justify-between">
+                    <div>{elem[0].sundata?.sunrise}</div>
+                    <div>{elem[0].sundata?.sunset}</div>
                 </div>  
             </div>
         </>
