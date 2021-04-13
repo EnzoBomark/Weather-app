@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Forecast from "./components/Forecast"
 import Weather from "./components/Weather"
-import Country from "./components/Country"
-import StartComp from "./components/StartComp"
 
 const openweathermap_api = {
     key: `${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
@@ -32,8 +30,9 @@ function App() {
         setQuery('Stockholm, SWE');
     }, []);
 
-    const search = e => {
-        if(e.key === "Enter" && query !== ''){
+    const search = () => {
+        if(query !== ''){
+            
             // fetch weather and forecast data
             fetch(`${openweathermap_api.base}forecast?q=${query}&units=metric&APPID=${openweathermap_api.key}`)
             .then(res => res.json())
@@ -58,14 +57,8 @@ function App() {
                 wind: item.wind.speed,
             }));
 
-            weather[0].date = new Date().toLocaleDateString() + ' 00:00:00';
-            console.log(weather[0].date)
-
             weather.filter((e,i) => new Date(e.date).getHours() == 0 || i == 0)
-            .forEach(weather => {
-                weather.sundata = solar_events(new Date(weather.date), country.lat, country.lng, country.timezone/3600)
-            });
-
+            .forEach(weather =>  weather.sundata = solar_events(new Date(weather.date), country.lat, country.lng, country.timezone/3600));
             
             const output = weather.reduce((acc, curr, idx, arr) => {
                 if(new Date(arr[--idx]?.date).toLocaleDateString() != new Date(arr[++idx]?.date).toLocaleDateString()) acc.push([]);
@@ -73,12 +66,7 @@ function App() {
                 return acc;
             }, []);
             
-            
-            // console.log( weather.filter((e,i) => new Date(e.date).getHours() == 0 || i == 0));
-            
-            output.pop();
-            output.shift();
-            setWeather(weather.shift());
+            setWeather(output.shift());
             setForecast(output);
             setCountry(country);
             })
@@ -86,23 +74,6 @@ function App() {
                 console.error('Error:', error);
             });
         }
-    }
-
-    // Return true when the sun is up
-    const newCurrentTime = (result) => {
-        const timezone = result.timezone/3600, 
-              sunrise = result.sunrise * 1000, 
-              sunset = result.sunset * 1000;
-
-        let currentTime = new Date().getUTCHours() + timezone;
-        let sunriseUtc =  new Date(sunrise).getUTCHours() + timezone; 
-        let sunsetUtc = new Date(sunset).getUTCHours() + timezone;
-        
-        if(currentTime >= 24) currentTime -= 24;
-        if(sunriseUtc >= 24) sunriseUtc -= 24;
-        if(sunsetUtc >= 24) sunsetUtc -= 24;
-
-        return (currentTime >= sunriseUtc && currentTime <= sunsetUtc);
     }
 
     const solar_event = (date, latitude, longitude, rising, zenith, timezone) => {
@@ -179,11 +150,9 @@ function App() {
         return result;
     }
     
-    const zeniths = 90.833333 ;
+    const sunrise = (date, latitude, longitude, timezone) =>  solar_event(date, latitude, longitude, true, 90.833333, timezone);
     
-    const sunrise = (date, latitude, longitude, timezone) =>  solar_event(date, latitude, longitude, true, zeniths, timezone);
-    
-    const sunset = (date, latitude, longitude, timezone) => solar_event(date, latitude, longitude, false, zeniths, timezone);
+    const sunset = (date, latitude, longitude, timezone) => solar_event(date, latitude, longitude, false, 90.833333, timezone);
     
     const solar_events = (date, latitude, longitude, timezone) => ({
         'sunrise': `${sunrise(date, latitude, longitude, timezone)}`,
@@ -191,33 +160,29 @@ function App() {
     });
 
     return (
-        <div className={(country) ? (newCurrentTime(country) ? 'app day': 'app night') : 'app'}>
-            <main>
-                <div className="search-box">
-                    <input type="text"
-                    className="search-bar" 
-                    placeholder="Search..."
-                    onChange={e => setQuery(e.target.value)}
-                    value={query}
-                    onKeyPress={search}
-                    />
+        <div className='app'>
+            <main className="flex flex-col items-center">
+                <div className="bg-red-100 flex justify-between p-5 w-screen max-w-screen-lg">
+                    <div className="rounded-xl h-16 w-10/12 p-5 bg-white">
+                        <button onClick={search}>Search</button>
+                        <input type="text"
+                        className="" 
+                        placeholder="Search..."
+                        onChange={e => setQuery(e.target.value)}
+                        value={query}
+                        />
+                    </div>
 
-                    <div onClick={() => setUnit(!unit)}>Unit</div>
+                    <div className="rounded-xl ml-5 h-16 w-16 p-5 bg-white">
+                        star
+                    </div>
                 </div>
 
                 {   country &&
                     <>
-                        <Country country={country}/>
+                        <Weather  weather={weather} unit={unit} country={country}/>
 
-                        <Weather weather={weather} unit={unit} country={country}/>
-
-                        <Forecast forecast={forecast} unit={unit}/>
-                    </>
-                }
-
-                {   country == false && 
-                    <>
-                        <StartComp/>
+                        {/* <Forecast forecast={forecast} unit={unit} country={country}/> */}
                     </>
                 }
             </main>

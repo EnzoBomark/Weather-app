@@ -6,12 +6,12 @@ export default function ForecastCard({elem, unit}) {
 
     return (
         <>
-            <div className="day flex flex-col">
-                <div className="flex justify-between w-full">
+            <div className="">
+                <div className="">
                     {elem.map((elem,idx)=>
                         <div 
                             key={idx} 
-                            className={toggleState === elem.date ? "cursor-pointer" : "opacity-50 cursor-pointer"} 
+                            className={toggleState === elem.date ? "" : ""} 
                             onClick={() => active(elem.date)}>
                             {new Date(elem.date).getHours() >= 10 ? new Date(elem.date).getHours() : '0' + new Date(elem.date).getHours()}
                         </div>           
@@ -19,15 +19,15 @@ export default function ForecastCard({elem, unit}) {
                 </div>
 
                 {elem.map((elem,idx)=>
-                    <div key={idx} className={toggleState === elem.date ? "flex flex-col items-center" : "hidden"}>
-                        <div className='date'>
+                    <div key={idx} className={toggleState === elem.date ? "" : "hidden"}>
+                        <div className=''>
                         {elem.date} 
                         </div>
                         <div className={elem.type}></div>
                         <div>
                         {elem.type} 
                         </div>
-                        <div className='temp'>
+                        <div className=''>
                         {(unit) ? `${Math.round(elem.temp * 10) / 10}°C` : `${Math.round((elem.temp * 9/5 + 32) * 10) / 10}°F`}
                         </div>    
 
@@ -41,7 +41,7 @@ export default function ForecastCard({elem, unit}) {
                 )}
 
                 {/* Add extra info box*/}
-                <div className="w-full flex justify-between">
+                <div className="">
                     <div>{elem[0].sundata?.sunrise}</div>
                     <div>{elem[0].sundata?.sunset}</div>
                 </div>  

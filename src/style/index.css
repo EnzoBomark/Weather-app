@@ -7,1475 +7,536 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-weight: 700;
   font-family: 'Nunito', sans-serif;
 }
 
-.app {
-  background-color: #99bdf2;
-  -webkit-transition: 0.4s ease-out;
-  transition: 0.4s ease-out;
-}
-
-.app .appContainer {
-  padding: 40px;
-}
-
-.app .appContainer h1 {
-  font-size: 52px;
-}
-
-.app .search-box {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  width: 80%;
-  margin: 0 0 675px 0;
-  max-width: 700px;
-}
-
-.app .search-box .search-bar {
-  font-size: 30px;
-  color: #172131;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-.app .search-box .search-bar::-webkit-input-placeholder {
-  color: #172131;
-}
-
-.app .search-box .search-bar:-ms-input-placeholder {
-  color: #172131;
-}
-
-.app .search-box .search-bar::-ms-input-placeholder {
-  color: #172131;
-}
-
-.app .search-box .search-bar::placeholder {
-  color: #172131;
-}
-
-.app main {
-  min-height: 100vh;
+.card {
+  position: relative;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  max-width: 640px;
+  border-radius: 24px;
+  height: 400px;
+  -webkit-transition: background-color 0.8s ease;
+  transition: background-color 0.8s ease;
 }
 
-.app.day {
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), to(#12168765));
-  background: linear-gradient(180deg, #ffffff00 0%, #12168765 100%);
-  background-color: #99bdf2;
+.card-image {
+  position: absolute;
+  top: -50px;
+  left: -50px;
 }
 
-.app.day main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0 20px;
+.day {
+  background-color: #3b82f6;
 }
 
-.app.day .search-box {
-  margin: 35px 0 75px 0;
-}
-
-.app.day .search-box .search-bar {
-  color: #172131;
-  width: 100%;
-}
-
-.app.day .search-box .search-bar::-webkit-input-placeholder {
-  color: #172131;
-}
-
-.app.day .search-box .search-bar:-ms-input-placeholder {
-  color: #172131;
-}
-
-.app.day .search-box .search-bar::-ms-input-placeholder {
-  color: #172131;
-}
-
-.app.day .search-box .search-bar::placeholder {
-  color: #172131;
-}
-
-.app.day .location-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.app.day .location-box .location {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  margin: 20px 0;
-  color: #172131;
-  font-size: 30px;
-  text-align: center;
-}
-
-.app.day .weather-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  max-width: 500px;
-  width: 100%;
-}
-
-.app.day .weather-box .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  border-radius: 20px;
-  padding: 70px 50px;
-}
-
-.app.day .weather-box .container .date {
-  color: #172131;
-  text-align: center;
-}
-
-.app.day .weather-box .container .temp {
-  color: #172131;
-  font-size: 72px;
-  text-align: center;
-}
-
-.app.day .weather-box .container .weather {
-  color: #172131;
-  font-size: 52px;
-  text-align: center;
-}
-
-.app.day .weather-box .container .Clouds {
-  background-image: url("../images/sun.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+.day .Clouds {
+  background-image: url("../images/cloud.png");
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.day .weather-box .container .Rain {
+.day .Rain {
   background-image: url("../images/rain.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.day .weather-box .container .Clear {
+.day .Clear {
   background-image: url("../images/sun.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.day .weather-box .container .Snow {
+.day .Snow {
   background-image: url("../images/snow.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.day .forecast {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.night {
+  background-color: #09224b;
 }
 
-.app.day .forecast .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.app.day .forecast .container .day {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  margin: 30px;
-  width: 250px;
-  padding: 50px 30px;
-}
-
-.app.day .forecast .container .day div {
-  color: #172131;
-}
-
-.app.day .forecast .container .day .date {
-  font-size: 30px;
-  text-align: center;
-}
-
-.app.day .forecast .container .day .temp {
-  margin-top: 10px;
-  font-size: 30px;
-}
-
-.app.day .forecast .container .day .Clouds {
-  background-image: url("../images/sun.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.day .forecast .container .day .Rain {
-  background-image: url("../images/rain.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.day .forecast .container .day .Clear {
-  background-image: url("../images/sun.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.day .forecast .container .day .Snow {
-  background-image: url("../images/snow.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.day .progress-dot {
-  background-color: #172131;
-  width: 8px;
-  height: 8px;
-  margin-bottom: 8px;
-  border-radius: 9999px;
-}
-
-.app.day #progress-container {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-.app.day svg {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  display: block;
-  width: 140px;
-  height: 140px;
-}
-
-.app.day svg circle {
-  fill: none;
-  stroke-width: 12px;
-}
-
-.app.day svg circle:nth-child(1) {
-  stroke: rgba(23, 33, 49, 0.2);
-}
-
-.app.day svg circle:nth-child(2) {
-  stroke: #172131;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 402.124;
-  stroke-dashoffset: 402.124;
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-}
-
-.app.day svg[percent="1"] circle:nth-child(2) {
-  stroke-dashoffset: 398.10276;
-}
-
-.app.day svg[percent="2"] circle:nth-child(2) {
-  stroke-dashoffset: 394.08152;
-}
-
-.app.day svg[percent="3"] circle:nth-child(2) {
-  stroke-dashoffset: 390.06028;
-}
-
-.app.day svg[percent="4"] circle:nth-child(2) {
-  stroke-dashoffset: 386.03904;
-}
-
-.app.day svg[percent="5"] circle:nth-child(2) {
-  stroke-dashoffset: 382.0178;
-}
-
-.app.day svg[percent="6"] circle:nth-child(2) {
-  stroke-dashoffset: 377.99656;
-}
-
-.app.day svg[percent="7"] circle:nth-child(2) {
-  stroke-dashoffset: 373.97532;
-}
-
-.app.day svg[percent="8"] circle:nth-child(2) {
-  stroke-dashoffset: 369.95408;
-}
-
-.app.day svg[percent="9"] circle:nth-child(2) {
-  stroke-dashoffset: 365.93284;
-}
-
-.app.day svg[percent="10"] circle:nth-child(2) {
-  stroke-dashoffset: 361.9116;
-}
-
-.app.day svg[percent="11"] circle:nth-child(2) {
-  stroke-dashoffset: 357.89036;
-}
-
-.app.day svg[percent="12"] circle:nth-child(2) {
-  stroke-dashoffset: 353.86912;
-}
-
-.app.day svg[percent="13"] circle:nth-child(2) {
-  stroke-dashoffset: 349.84788;
-}
-
-.app.day svg[percent="14"] circle:nth-child(2) {
-  stroke-dashoffset: 345.82664;
-}
-
-.app.day svg[percent="15"] circle:nth-child(2) {
-  stroke-dashoffset: 341.8054;
-}
-
-.app.day svg[percent="16"] circle:nth-child(2) {
-  stroke-dashoffset: 337.78416;
-}
-
-.app.day svg[percent="17"] circle:nth-child(2) {
-  stroke-dashoffset: 333.76292;
-}
-
-.app.day svg[percent="18"] circle:nth-child(2) {
-  stroke-dashoffset: 329.74168;
-}
-
-.app.day svg[percent="19"] circle:nth-child(2) {
-  stroke-dashoffset: 325.72044;
-}
-
-.app.day svg[percent="20"] circle:nth-child(2) {
-  stroke-dashoffset: 321.6992;
-}
-
-.app.day svg[percent="21"] circle:nth-child(2) {
-  stroke-dashoffset: 317.67796;
-}
-
-.app.day svg[percent="22"] circle:nth-child(2) {
-  stroke-dashoffset: 313.65672;
-}
-
-.app.day svg[percent="23"] circle:nth-child(2) {
-  stroke-dashoffset: 309.63548;
-}
-
-.app.day svg[percent="24"] circle:nth-child(2) {
-  stroke-dashoffset: 305.61424;
-}
-
-.app.day svg[percent="25"] circle:nth-child(2) {
-  stroke-dashoffset: 301.593;
-}
-
-.app.day svg[percent="26"] circle:nth-child(2) {
-  stroke-dashoffset: 297.57176;
-}
-
-.app.day svg[percent="27"] circle:nth-child(2) {
-  stroke-dashoffset: 293.55052;
-}
-
-.app.day svg[percent="28"] circle:nth-child(2) {
-  stroke-dashoffset: 289.52928;
-}
-
-.app.day svg[percent="29"] circle:nth-child(2) {
-  stroke-dashoffset: 285.50804;
-}
-
-.app.day svg[percent="30"] circle:nth-child(2) {
-  stroke-dashoffset: 281.4868;
-}
-
-.app.day svg[percent="31"] circle:nth-child(2) {
-  stroke-dashoffset: 277.46556;
-}
-
-.app.day svg[percent="32"] circle:nth-child(2) {
-  stroke-dashoffset: 273.44432;
-}
-
-.app.day svg[percent="33"] circle:nth-child(2) {
-  stroke-dashoffset: 269.42308;
-}
-
-.app.day svg[percent="34"] circle:nth-child(2) {
-  stroke-dashoffset: 265.40184;
-}
-
-.app.day svg[percent="35"] circle:nth-child(2) {
-  stroke-dashoffset: 261.3806;
-}
-
-.app.day svg[percent="36"] circle:nth-child(2) {
-  stroke-dashoffset: 257.35936;
-}
-
-.app.day svg[percent="37"] circle:nth-child(2) {
-  stroke-dashoffset: 253.33812;
-}
-
-.app.day svg[percent="38"] circle:nth-child(2) {
-  stroke-dashoffset: 249.31688;
-}
-
-.app.day svg[percent="39"] circle:nth-child(2) {
-  stroke-dashoffset: 245.29564;
-}
-
-.app.day svg[percent="40"] circle:nth-child(2) {
-  stroke-dashoffset: 241.2744;
-}
-
-.app.day svg[percent="41"] circle:nth-child(2) {
-  stroke-dashoffset: 237.25316;
-}
-
-.app.day svg[percent="42"] circle:nth-child(2) {
-  stroke-dashoffset: 233.23192;
-}
-
-.app.day svg[percent="43"] circle:nth-child(2) {
-  stroke-dashoffset: 229.21068;
-}
-
-.app.day svg[percent="44"] circle:nth-child(2) {
-  stroke-dashoffset: 225.18944;
-}
-
-.app.day svg[percent="45"] circle:nth-child(2) {
-  stroke-dashoffset: 221.1682;
-}
-
-.app.day svg[percent="46"] circle:nth-child(2) {
-  stroke-dashoffset: 217.14696;
-}
-
-.app.day svg[percent="47"] circle:nth-child(2) {
-  stroke-dashoffset: 213.12572;
-}
-
-.app.day svg[percent="48"] circle:nth-child(2) {
-  stroke-dashoffset: 209.10448;
-}
-
-.app.day svg[percent="49"] circle:nth-child(2) {
-  stroke-dashoffset: 205.08324;
-}
-
-.app.day svg[percent="50"] circle:nth-child(2) {
-  stroke-dashoffset: 201.062;
-}
-
-.app.day svg[percent="51"] circle:nth-child(2) {
-  stroke-dashoffset: 197.04076;
-}
-
-.app.day svg[percent="52"] circle:nth-child(2) {
-  stroke-dashoffset: 193.01952;
-}
-
-.app.day svg[percent="53"] circle:nth-child(2) {
-  stroke-dashoffset: 188.99828;
-}
-
-.app.day svg[percent="54"] circle:nth-child(2) {
-  stroke-dashoffset: 184.97704;
-}
-
-.app.day svg[percent="55"] circle:nth-child(2) {
-  stroke-dashoffset: 180.9558;
-}
-
-.app.day svg[percent="56"] circle:nth-child(2) {
-  stroke-dashoffset: 176.93456;
-}
-
-.app.day svg[percent="57"] circle:nth-child(2) {
-  stroke-dashoffset: 172.91332;
-}
-
-.app.day svg[percent="58"] circle:nth-child(2) {
-  stroke-dashoffset: 168.89208;
-}
-
-.app.day svg[percent="59"] circle:nth-child(2) {
-  stroke-dashoffset: 164.87084;
-}
-
-.app.day svg[percent="60"] circle:nth-child(2) {
-  stroke-dashoffset: 160.8496;
-}
-
-.app.day svg[percent="61"] circle:nth-child(2) {
-  stroke-dashoffset: 156.82836;
-}
-
-.app.day svg[percent="62"] circle:nth-child(2) {
-  stroke-dashoffset: 152.80712;
-}
-
-.app.day svg[percent="63"] circle:nth-child(2) {
-  stroke-dashoffset: 148.78588;
-}
-
-.app.day svg[percent="64"] circle:nth-child(2) {
-  stroke-dashoffset: 144.76464;
-}
-
-.app.day svg[percent="65"] circle:nth-child(2) {
-  stroke-dashoffset: 140.7434;
-}
-
-.app.day svg[percent="66"] circle:nth-child(2) {
-  stroke-dashoffset: 136.72216;
-}
-
-.app.day svg[percent="67"] circle:nth-child(2) {
-  stroke-dashoffset: 132.70092;
-}
-
-.app.day svg[percent="68"] circle:nth-child(2) {
-  stroke-dashoffset: 128.67968;
-}
-
-.app.day svg[percent="69"] circle:nth-child(2) {
-  stroke-dashoffset: 124.65844;
-}
-
-.app.day svg[percent="70"] circle:nth-child(2) {
-  stroke-dashoffset: 120.6372;
-}
-
-.app.day svg[percent="71"] circle:nth-child(2) {
-  stroke-dashoffset: 116.61596;
-}
-
-.app.day svg[percent="72"] circle:nth-child(2) {
-  stroke-dashoffset: 112.59472;
-}
-
-.app.day svg[percent="73"] circle:nth-child(2) {
-  stroke-dashoffset: 108.57348;
-}
-
-.app.day svg[percent="74"] circle:nth-child(2) {
-  stroke-dashoffset: 104.55224;
-}
-
-.app.day svg[percent="75"] circle:nth-child(2) {
-  stroke-dashoffset: 100.531;
-}
-
-.app.day svg[percent="76"] circle:nth-child(2) {
-  stroke-dashoffset: 96.50976;
-}
-
-.app.day svg[percent="77"] circle:nth-child(2) {
-  stroke-dashoffset: 92.48852;
-}
-
-.app.day svg[percent="78"] circle:nth-child(2) {
-  stroke-dashoffset: 88.46728;
-}
-
-.app.day svg[percent="79"] circle:nth-child(2) {
-  stroke-dashoffset: 84.44604;
-}
-
-.app.day svg[percent="80"] circle:nth-child(2) {
-  stroke-dashoffset: 80.4248;
-}
-
-.app.day svg[percent="81"] circle:nth-child(2) {
-  stroke-dashoffset: 76.40356;
-}
-
-.app.day svg[percent="82"] circle:nth-child(2) {
-  stroke-dashoffset: 72.38232;
-}
-
-.app.day svg[percent="83"] circle:nth-child(2) {
-  stroke-dashoffset: 68.36108;
-}
-
-.app.day svg[percent="84"] circle:nth-child(2) {
-  stroke-dashoffset: 64.33984;
-}
-
-.app.day svg[percent="85"] circle:nth-child(2) {
-  stroke-dashoffset: 60.3186;
-}
-
-.app.day svg[percent="86"] circle:nth-child(2) {
-  stroke-dashoffset: 56.29736;
-}
-
-.app.day svg[percent="87"] circle:nth-child(2) {
-  stroke-dashoffset: 52.27612;
-}
-
-.app.day svg[percent="88"] circle:nth-child(2) {
-  stroke-dashoffset: 48.25488;
-}
-
-.app.day svg[percent="89"] circle:nth-child(2) {
-  stroke-dashoffset: 44.23364;
-}
-
-.app.day svg[percent="90"] circle:nth-child(2) {
-  stroke-dashoffset: 40.2124;
-}
-
-.app.day svg[percent="91"] circle:nth-child(2) {
-  stroke-dashoffset: 36.19116;
-}
-
-.app.day svg[percent="92"] circle:nth-child(2) {
-  stroke-dashoffset: 32.16992;
-}
-
-.app.day svg[percent="93"] circle:nth-child(2) {
-  stroke-dashoffset: 28.14868;
-}
-
-.app.day svg[percent="94"] circle:nth-child(2) {
-  stroke-dashoffset: 24.12744;
-}
-
-.app.day svg[percent="95"] circle:nth-child(2) {
-  stroke-dashoffset: 20.1062;
-}
-
-.app.day svg[percent="96"] circle:nth-child(2) {
-  stroke-dashoffset: 16.08496;
-}
-
-.app.day svg[percent="97"] circle:nth-child(2) {
-  stroke-dashoffset: 12.06372;
-}
-
-.app.day svg[percent="98"] circle:nth-child(2) {
-  stroke-dashoffset: 8.04248;
-}
-
-.app.day svg[percent="99"] circle:nth-child(2) {
-  stroke-dashoffset: 4.02124;
-}
-
-.app.day svg[percent="100"] circle:nth-child(2) {
-  stroke-dashoffset: 0;
-}
-
-.app.night {
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff00), to(#12168765));
-  background: linear-gradient(180deg, #ffffff00 0%, #12168765 100%);
-  background-color: #341d5a;
-}
-
-.app.night main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0 20px;
-}
-
-.app.night .search-box {
-  margin: 35px 0 75px 0;
-}
-
-.app.night .search-box .search-bar {
-  color: #ffffff;
-  width: 100%;
-}
-
-.app.night .search-box .search-bar::-webkit-input-placeholder {
-  color: #ffffff;
-}
-
-.app.night .search-box .search-bar:-ms-input-placeholder {
-  color: #ffffff;
-}
-
-.app.night .search-box .search-bar::-ms-input-placeholder {
-  color: #ffffff;
-}
-
-.app.night .search-box .search-bar::placeholder {
-  color: #ffffff;
-}
-
-.app.night .location-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.app.night .location-box .location {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  margin: 20px 0;
-  color: #ffffff;
-  font-size: 30px;
-  text-align: center;
-}
-
-.app.night .weather-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  max-width: 500px;
-  width: 100%;
-}
-
-.app.night .weather-box .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  border-radius: 20px;
-  padding: 70px 50px;
-}
-
-.app.night .weather-box .container .date {
-  color: #ffffff;
-  text-align: center;
-}
-
-.app.night .weather-box .container .temp {
-  color: #ffffff;
-  font-size: 72px;
-  text-align: center;
-}
-
-.app.night .weather-box .container .weather {
-  color: #ffffff;
-  font-size: 52px;
-  text-align: center;
-}
-
-.app.night .weather-box .container .Clouds {
+.night .Clouds {
   background-image: url("../images/night-cloud.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.night .weather-box .container .Rain {
+.night .Rain {
   background-image: url("../images/night-rain.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.night .weather-box .container .Clear {
+.night .Clear {
   background-image: url("../images/night-moon.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.night .weather-box .container .Snow {
+.night .Snow {
   background-image: url("../images/night-snow.png");
-  width: 256px;
-  height: 256px;
-  background-size: 256px;
+  width: 155px;
+  height: 155px;
+  background-size: 155px;
   background-repeat: no-repeat;
 }
 
-.app.night .forecast {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.app.night .forecast .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.app.night .forecast .container .day {
-  border-bottom: 1px solid #f5f5f585;
-  border-left: 1px solid #f5f5f51f;
-  border-right: 1px solid #ffffff28;
-  background: linear-gradient(30deg, #b5caee00 0%, #ffffff0c 100%);
-  border-radius: 20px;
-  padding: 20px 30px;
-  margin: 30px;
-  width: 250px;
-  padding: 50px 30px;
-}
-
-.app.night .forecast .container .day div {
-  color: #ffffff;
-}
-
-.app.night .forecast .container .day .date {
-  font-size: 30px;
-  text-align: center;
-}
-
-.app.night .forecast .container .day .temp {
-  margin-top: 10px;
-  font-size: 30px;
-}
-
-.app.night .forecast .container .day .Clouds {
-  background-image: url("../images/night-cloud.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.night .forecast .container .day .Rain {
-  background-image: url("../images/night-rain.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.night .forecast .container .day .Clear {
-  background-image: url("../images/night-moon.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.night .forecast .container .day .Snow {
-  background-image: url("../images/night-snow.png");
-  width: 100px;
-  height: 100px;
-  background-size: 100px;
-  background-repeat: no-repeat;
-}
-
-.app.night .progress-dot {
+.progress-dot {
   background-color: #ffffff;
-  width: 8px;
-  height: 8px;
-  margin-bottom: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 9999px;
+  position: absolute;
+  right: 70px;
+  bottom: 120px;
 }
 
-.app.night #progress-container {
+#progress-container {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
-.app.night svg {
+svg {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   display: block;
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
 }
 
-.app.night svg circle {
+svg circle {
   fill: none;
-  stroke-width: 12px;
+  stroke-width: 7px;
 }
 
-.app.night svg circle:nth-child(1) {
+svg circle:nth-child(1) {
   stroke: rgba(255, 255, 255, 0.2);
 }
 
-.app.night svg circle:nth-child(2) {
+svg circle:nth-child(2) {
   stroke: #ffffff;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 402.124;
-  stroke-dashoffset: 402.124;
+  stroke-dasharray: 225.124;
+  stroke-dashoffset: 225.124;
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
 }
 
-.app.night svg[percent="1"] circle:nth-child(2) {
-  stroke-dashoffset: 398.10276;
+svg[percent="1"] circle:nth-child(2) {
+  stroke-dashoffset: 222.87276;
 }
 
-.app.night svg[percent="2"] circle:nth-child(2) {
-  stroke-dashoffset: 394.08152;
+svg[percent="2"] circle:nth-child(2) {
+  stroke-dashoffset: 220.62152;
 }
 
-.app.night svg[percent="3"] circle:nth-child(2) {
-  stroke-dashoffset: 390.06028;
+svg[percent="3"] circle:nth-child(2) {
+  stroke-dashoffset: 218.37028;
 }
 
-.app.night svg[percent="4"] circle:nth-child(2) {
-  stroke-dashoffset: 386.03904;
+svg[percent="4"] circle:nth-child(2) {
+  stroke-dashoffset: 216.11904;
 }
 
-.app.night svg[percent="5"] circle:nth-child(2) {
-  stroke-dashoffset: 382.0178;
+svg[percent="5"] circle:nth-child(2) {
+  stroke-dashoffset: 213.8678;
 }
 
-.app.night svg[percent="6"] circle:nth-child(2) {
-  stroke-dashoffset: 377.99656;
+svg[percent="6"] circle:nth-child(2) {
+  stroke-dashoffset: 211.61656;
 }
 
-.app.night svg[percent="7"] circle:nth-child(2) {
-  stroke-dashoffset: 373.97532;
+svg[percent="7"] circle:nth-child(2) {
+  stroke-dashoffset: 209.36532;
 }
 
-.app.night svg[percent="8"] circle:nth-child(2) {
-  stroke-dashoffset: 369.95408;
+svg[percent="8"] circle:nth-child(2) {
+  stroke-dashoffset: 207.11408;
 }
 
-.app.night svg[percent="9"] circle:nth-child(2) {
-  stroke-dashoffset: 365.93284;
+svg[percent="9"] circle:nth-child(2) {
+  stroke-dashoffset: 204.86284;
 }
 
-.app.night svg[percent="10"] circle:nth-child(2) {
-  stroke-dashoffset: 361.9116;
+svg[percent="10"] circle:nth-child(2) {
+  stroke-dashoffset: 202.6116;
 }
 
-.app.night svg[percent="11"] circle:nth-child(2) {
-  stroke-dashoffset: 357.89036;
+svg[percent="11"] circle:nth-child(2) {
+  stroke-dashoffset: 200.36036;
 }
 
-.app.night svg[percent="12"] circle:nth-child(2) {
-  stroke-dashoffset: 353.86912;
+svg[percent="12"] circle:nth-child(2) {
+  stroke-dashoffset: 198.10912;
 }
 
-.app.night svg[percent="13"] circle:nth-child(2) {
-  stroke-dashoffset: 349.84788;
+svg[percent="13"] circle:nth-child(2) {
+  stroke-dashoffset: 195.85788;
 }
 
-.app.night svg[percent="14"] circle:nth-child(2) {
-  stroke-dashoffset: 345.82664;
+svg[percent="14"] circle:nth-child(2) {
+  stroke-dashoffset: 193.60664;
 }
 
-.app.night svg[percent="15"] circle:nth-child(2) {
-  stroke-dashoffset: 341.8054;
+svg[percent="15"] circle:nth-child(2) {
+  stroke-dashoffset: 191.3554;
 }
 
-.app.night svg[percent="16"] circle:nth-child(2) {
-  stroke-dashoffset: 337.78416;
+svg[percent="16"] circle:nth-child(2) {
+  stroke-dashoffset: 189.10416;
 }
 
-.app.night svg[percent="17"] circle:nth-child(2) {
-  stroke-dashoffset: 333.76292;
+svg[percent="17"] circle:nth-child(2) {
+  stroke-dashoffset: 186.85292;
 }
 
-.app.night svg[percent="18"] circle:nth-child(2) {
-  stroke-dashoffset: 329.74168;
+svg[percent="18"] circle:nth-child(2) {
+  stroke-dashoffset: 184.60168;
 }
 
-.app.night svg[percent="19"] circle:nth-child(2) {
-  stroke-dashoffset: 325.72044;
+svg[percent="19"] circle:nth-child(2) {
+  stroke-dashoffset: 182.35044;
 }
 
-.app.night svg[percent="20"] circle:nth-child(2) {
-  stroke-dashoffset: 321.6992;
+svg[percent="20"] circle:nth-child(2) {
+  stroke-dashoffset: 180.0992;
 }
 
-.app.night svg[percent="21"] circle:nth-child(2) {
-  stroke-dashoffset: 317.67796;
+svg[percent="21"] circle:nth-child(2) {
+  stroke-dashoffset: 177.84796;
 }
 
-.app.night svg[percent="22"] circle:nth-child(2) {
-  stroke-dashoffset: 313.65672;
+svg[percent="22"] circle:nth-child(2) {
+  stroke-dashoffset: 175.59672;
 }
 
-.app.night svg[percent="23"] circle:nth-child(2) {
-  stroke-dashoffset: 309.63548;
+svg[percent="23"] circle:nth-child(2) {
+  stroke-dashoffset: 173.34548;
 }
 
-.app.night svg[percent="24"] circle:nth-child(2) {
-  stroke-dashoffset: 305.61424;
+svg[percent="24"] circle:nth-child(2) {
+  stroke-dashoffset: 171.09424;
 }
 
-.app.night svg[percent="25"] circle:nth-child(2) {
-  stroke-dashoffset: 301.593;
+svg[percent="25"] circle:nth-child(2) {
+  stroke-dashoffset: 168.843;
 }
 
-.app.night svg[percent="26"] circle:nth-child(2) {
-  stroke-dashoffset: 297.57176;
+svg[percent="26"] circle:nth-child(2) {
+  stroke-dashoffset: 166.59176;
 }
 
-.app.night svg[percent="27"] circle:nth-child(2) {
-  stroke-dashoffset: 293.55052;
+svg[percent="27"] circle:nth-child(2) {
+  stroke-dashoffset: 164.34052;
 }
 
-.app.night svg[percent="28"] circle:nth-child(2) {
-  stroke-dashoffset: 289.52928;
+svg[percent="28"] circle:nth-child(2) {
+  stroke-dashoffset: 162.08928;
 }
 
-.app.night svg[percent="29"] circle:nth-child(2) {
-  stroke-dashoffset: 285.50804;
+svg[percent="29"] circle:nth-child(2) {
+  stroke-dashoffset: 159.83804;
 }
 
-.app.night svg[percent="30"] circle:nth-child(2) {
-  stroke-dashoffset: 281.4868;
+svg[percent="30"] circle:nth-child(2) {
+  stroke-dashoffset: 157.5868;
 }
 
-.app.night svg[percent="31"] circle:nth-child(2) {
-  stroke-dashoffset: 277.46556;
+svg[percent="31"] circle:nth-child(2) {
+  stroke-dashoffset: 155.33556;
 }
 
-.app.night svg[percent="32"] circle:nth-child(2) {
-  stroke-dashoffset: 273.44432;
+svg[percent="32"] circle:nth-child(2) {
+  stroke-dashoffset: 153.08432;
 }
 
-.app.night svg[percent="33"] circle:nth-child(2) {
-  stroke-dashoffset: 269.42308;
+svg[percent="33"] circle:nth-child(2) {
+  stroke-dashoffset: 150.83308;
 }
 
-.app.night svg[percent="34"] circle:nth-child(2) {
-  stroke-dashoffset: 265.40184;
+svg[percent="34"] circle:nth-child(2) {
+  stroke-dashoffset: 148.58184;
 }
 
-.app.night svg[percent="35"] circle:nth-child(2) {
-  stroke-dashoffset: 261.3806;
+svg[percent="35"] circle:nth-child(2) {
+  stroke-dashoffset: 146.3306;
 }
 
-.app.night svg[percent="36"] circle:nth-child(2) {
-  stroke-dashoffset: 257.35936;
+svg[percent="36"] circle:nth-child(2) {
+  stroke-dashoffset: 144.07936;
 }
 
-.app.night svg[percent="37"] circle:nth-child(2) {
-  stroke-dashoffset: 253.33812;
+svg[percent="37"] circle:nth-child(2) {
+  stroke-dashoffset: 141.82812;
 }
 
-.app.night svg[percent="38"] circle:nth-child(2) {
-  stroke-dashoffset: 249.31688;
+svg[percent="38"] circle:nth-child(2) {
+  stroke-dashoffset: 139.57688;
 }
 
-.app.night svg[percent="39"] circle:nth-child(2) {
-  stroke-dashoffset: 245.29564;
+svg[percent="39"] circle:nth-child(2) {
+  stroke-dashoffset: 137.32564;
 }
 
-.app.night svg[percent="40"] circle:nth-child(2) {
-  stroke-dashoffset: 241.2744;
+svg[percent="40"] circle:nth-child(2) {
+  stroke-dashoffset: 135.0744;
 }
 
-.app.night svg[percent="41"] circle:nth-child(2) {
-  stroke-dashoffset: 237.25316;
+svg[percent="41"] circle:nth-child(2) {
+  stroke-dashoffset: 132.82316;
 }
 
-.app.night svg[percent="42"] circle:nth-child(2) {
-  stroke-dashoffset: 233.23192;
+svg[percent="42"] circle:nth-child(2) {
+  stroke-dashoffset: 130.57192;
 }
 
-.app.night svg[percent="43"] circle:nth-child(2) {
-  stroke-dashoffset: 229.21068;
+svg[percent="43"] circle:nth-child(2) {
+  stroke-dashoffset: 128.32068;
 }
 
-.app.night svg[percent="44"] circle:nth-child(2) {
-  stroke-dashoffset: 225.18944;
+svg[percent="44"] circle:nth-child(2) {
+  stroke-dashoffset: 126.06944;
 }
 
-.app.night svg[percent="45"] circle:nth-child(2) {
-  stroke-dashoffset: 221.1682;
+svg[percent="45"] circle:nth-child(2) {
+  stroke-dashoffset: 123.8182;
 }
 
-.app.night svg[percent="46"] circle:nth-child(2) {
-  stroke-dashoffset: 217.14696;
+svg[percent="46"] circle:nth-child(2) {
+  stroke-dashoffset: 121.56696;
 }
 
-.app.night svg[percent="47"] circle:nth-child(2) {
-  stroke-dashoffset: 213.12572;
+svg[percent="47"] circle:nth-child(2) {
+  stroke-dashoffset: 119.31572;
 }
 
-.app.night svg[percent="48"] circle:nth-child(2) {
-  stroke-dashoffset: 209.10448;
+svg[percent="48"] circle:nth-child(2) {
+  stroke-dashoffset: 117.06448;
 }
 
-.app.night svg[percent="49"] circle:nth-child(2) {
-  stroke-dashoffset: 205.08324;
+svg[percent="49"] circle:nth-child(2) {
+  stroke-dashoffset: 114.81324;
 }
 
-.app.night svg[percent="50"] circle:nth-child(2) {
-  stroke-dashoffset: 201.062;
+svg[percent="50"] circle:nth-child(2) {
+  stroke-dashoffset: 112.562;
 }
 
-.app.night svg[percent="51"] circle:nth-child(2) {
-  stroke-dashoffset: 197.04076;
+svg[percent="51"] circle:nth-child(2) {
+  stroke-dashoffset: 110.31076;
 }
 
-.app.night svg[percent="52"] circle:nth-child(2) {
-  stroke-dashoffset: 193.01952;
+svg[percent="52"] circle:nth-child(2) {
+  stroke-dashoffset: 108.05952;
 }
 
-.app.night svg[percent="53"] circle:nth-child(2) {
-  stroke-dashoffset: 188.99828;
+svg[percent="53"] circle:nth-child(2) {
+  stroke-dashoffset: 105.80828;
 }
 
-.app.night svg[percent="54"] circle:nth-child(2) {
-  stroke-dashoffset: 184.97704;
+svg[percent="54"] circle:nth-child(2) {
+  stroke-dashoffset: 103.55704;
 }
 
-.app.night svg[percent="55"] circle:nth-child(2) {
-  stroke-dashoffset: 180.9558;
+svg[percent="55"] circle:nth-child(2) {
+  stroke-dashoffset: 101.3058;
 }
 
-.app.night svg[percent="56"] circle:nth-child(2) {
-  stroke-dashoffset: 176.93456;
+svg[percent="56"] circle:nth-child(2) {
+  stroke-dashoffset: 99.05456;
 }
 
-.app.night svg[percent="57"] circle:nth-child(2) {
-  stroke-dashoffset: 172.91332;
+svg[percent="57"] circle:nth-child(2) {
+  stroke-dashoffset: 96.80332;
 }
 
-.app.night svg[percent="58"] circle:nth-child(2) {
-  stroke-dashoffset: 168.89208;
+svg[percent="58"] circle:nth-child(2) {
+  stroke-dashoffset: 94.55208;
 }
 
-.app.night svg[percent="59"] circle:nth-child(2) {
-  stroke-dashoffset: 164.87084;
+svg[percent="59"] circle:nth-child(2) {
+  stroke-dashoffset: 92.30084;
 }
 
-.app.night svg[percent="60"] circle:nth-child(2) {
-  stroke-dashoffset: 160.8496;
+svg[percent="60"] circle:nth-child(2) {
+  stroke-dashoffset: 90.0496;
 }
 
-.app.night svg[percent="61"] circle:nth-child(2) {
-  stroke-dashoffset: 156.82836;
+svg[percent="61"] circle:nth-child(2) {
+  stroke-dashoffset: 87.79836;
 }
 
-.app.night svg[percent="62"] circle:nth-child(2) {
-  stroke-dashoffset: 152.80712;
+svg[percent="62"] circle:nth-child(2) {
+  stroke-dashoffset: 85.54712;
 }
 
-.app.night svg[percent="63"] circle:nth-child(2) {
-  stroke-dashoffset: 148.78588;
+svg[percent="63"] circle:nth-child(2) {
+  stroke-dashoffset: 83.29588;
 }
 
-.app.night svg[percent="64"] circle:nth-child(2) {
-  stroke-dashoffset: 144.76464;
+svg[percent="64"] circle:nth-child(2) {
+  stroke-dashoffset: 81.04464;
 }
 
-.app.night svg[percent="65"] circle:nth-child(2) {
-  stroke-dashoffset: 140.7434;
+svg[percent="65"] circle:nth-child(2) {
+  stroke-dashoffset: 78.7934;
 }
 
-.app.night svg[percent="66"] circle:nth-child(2) {
-  stroke-dashoffset: 136.72216;
+svg[percent="66"] circle:nth-child(2) {
+  stroke-dashoffset: 76.54216;
 }
 
-.app.night svg[percent="67"] circle:nth-child(2) {
-  stroke-dashoffset: 132.70092;
+svg[percent="67"] circle:nth-child(2) {
+  stroke-dashoffset: 74.29092;
 }
 
-.app.night svg[percent="68"] circle:nth-child(2) {
-  stroke-dashoffset: 128.67968;
+svg[percent="68"] circle:nth-child(2) {
+  stroke-dashoffset: 72.03968;
 }
 
-.app.night svg[percent="69"] circle:nth-child(2) {
-  stroke-dashoffset: 124.65844;
+svg[percent="69"] circle:nth-child(2) {
+  stroke-dashoffset: 69.78844;
 }
 
-.app.night svg[percent="70"] circle:nth-child(2) {
-  stroke-dashoffset: 120.6372;
+svg[percent="70"] circle:nth-child(2) {
+  stroke-dashoffset: 67.5372;
 }
 
-.app.night svg[percent="71"] circle:nth-child(2) {
-  stroke-dashoffset: 116.61596;
+svg[percent="71"] circle:nth-child(2) {
+  stroke-dashoffset: 65.28596;
 }
 
-.app.night svg[percent="72"] circle:nth-child(2) {
-  stroke-dashoffset: 112.59472;
+svg[percent="72"] circle:nth-child(2) {
+  stroke-dashoffset: 63.03472;
 }
 
-.app.night svg[percent="73"] circle:nth-child(2) {
-  stroke-dashoffset: 108.57348;
+svg[percent="73"] circle:nth-child(2) {
+  stroke-dashoffset: 60.78348;
 }
 
-.app.night svg[percent="74"] circle:nth-child(2) {
-  stroke-dashoffset: 104.55224;
+svg[percent="74"] circle:nth-child(2) {
+  stroke-dashoffset: 58.53224;
 }
 
-.app.night svg[percent="75"] circle:nth-child(2) {
-  stroke-dashoffset: 100.531;
+svg[percent="75"] circle:nth-child(2) {
+  stroke-dashoffset: 56.281;
 }
 
-.app.night svg[percent="76"] circle:nth-child(2) {
-  stroke-dashoffset: 96.50976;
+svg[percent="76"] circle:nth-child(2) {
+  stroke-dashoffset: 54.02976;
 }
 
-.app.night svg[percent="77"] circle:nth-child(2) {
-  stroke-dashoffset: 92.48852;
+svg[percent="77"] circle:nth-child(2) {
+  stroke-dashoffset: 51.77852;
 }
 
-.app.night svg[percent="78"] circle:nth-child(2) {
-  stroke-dashoffset: 88.46728;
+svg[percent="78"] circle:nth-child(2) {
+  stroke-dashoffset: 49.52728;
 }
 
-.app.night svg[percent="79"] circle:nth-child(2) {
-  stroke-dashoffset: 84.44604;
+svg[percent="79"] circle:nth-child(2) {
+  stroke-dashoffset: 47.27604;
 }
 
-.app.night svg[percent="80"] circle:nth-child(2) {
-  stroke-dashoffset: 80.4248;
+svg[percent="80"] circle:nth-child(2) {
+  stroke-dashoffset: 45.0248;
 }
 
-.app.night svg[percent="81"] circle:nth-child(2) {
-  stroke-dashoffset: 76.40356;
+svg[percent="81"] circle:nth-child(2) {
+  stroke-dashoffset: 42.77356;
 }
 
-.app.night svg[percent="82"] circle:nth-child(2) {
-  stroke-dashoffset: 72.38232;
+svg[percent="82"] circle:nth-child(2) {
+  stroke-dashoffset: 40.52232;
 }
 
-.app.night svg[percent="83"] circle:nth-child(2) {
-  stroke-dashoffset: 68.36108;
+svg[percent="83"] circle:nth-child(2) {
+  stroke-dashoffset: 38.27108;
 }
 
-.app.night svg[percent="84"] circle:nth-child(2) {
-  stroke-dashoffset: 64.33984;
+svg[percent="84"] circle:nth-child(2) {
+  stroke-dashoffset: 36.01984;
 }
 
-.app.night svg[percent="85"] circle:nth-child(2) {
-  stroke-dashoffset: 60.3186;
+svg[percent="85"] circle:nth-child(2) {
+  stroke-dashoffset: 33.7686;
 }
 
-.app.night svg[percent="86"] circle:nth-child(2) {
-  stroke-dashoffset: 56.29736;
+svg[percent="86"] circle:nth-child(2) {
+  stroke-dashoffset: 31.51736;
 }
 
-.app.night svg[percent="87"] circle:nth-child(2) {
-  stroke-dashoffset: 52.27612;
+svg[percent="87"] circle:nth-child(2) {
+  stroke-dashoffset: 29.26612;
 }
 
-.app.night svg[percent="88"] circle:nth-child(2) {
-  stroke-dashoffset: 48.25488;
+svg[percent="88"] circle:nth-child(2) {
+  stroke-dashoffset: 27.01488;
 }
 
-.app.night svg[percent="89"] circle:nth-child(2) {
-  stroke-dashoffset: 44.23364;
+svg[percent="89"] circle:nth-child(2) {
+  stroke-dashoffset: 24.76364;
 }
 
-.app.night svg[percent="90"] circle:nth-child(2) {
-  stroke-dashoffset: 40.2124;
+svg[percent="90"] circle:nth-child(2) {
+  stroke-dashoffset: 22.5124;
 }
 
-.app.night svg[percent="91"] circle:nth-child(2) {
-  stroke-dashoffset: 36.19116;
+svg[percent="91"] circle:nth-child(2) {
+  stroke-dashoffset: 20.26116;
 }
 
-.app.night svg[percent="92"] circle:nth-child(2) {
-  stroke-dashoffset: 32.16992;
+svg[percent="92"] circle:nth-child(2) {
+  stroke-dashoffset: 18.00992;
 }
 
-.app.night svg[percent="93"] circle:nth-child(2) {
-  stroke-dashoffset: 28.14868;
+svg[percent="93"] circle:nth-child(2) {
+  stroke-dashoffset: 15.75868;
 }
 
-.app.night svg[percent="94"] circle:nth-child(2) {
-  stroke-dashoffset: 24.12744;
+svg[percent="94"] circle:nth-child(2) {
+  stroke-dashoffset: 13.50744;
 }
 
-.app.night svg[percent="95"] circle:nth-child(2) {
-  stroke-dashoffset: 20.1062;
+svg[percent="95"] circle:nth-child(2) {
+  stroke-dashoffset: 11.2562;
 }
 
-.app.night svg[percent="96"] circle:nth-child(2) {
-  stroke-dashoffset: 16.08496;
+svg[percent="96"] circle:nth-child(2) {
+  stroke-dashoffset: 9.00496;
 }
 
-.app.night svg[percent="97"] circle:nth-child(2) {
-  stroke-dashoffset: 12.06372;
+svg[percent="97"] circle:nth-child(2) {
+  stroke-dashoffset: 6.75372;
 }
 
-.app.night svg[percent="98"] circle:nth-child(2) {
-  stroke-dashoffset: 8.04248;
+svg[percent="98"] circle:nth-child(2) {
+  stroke-dashoffset: 4.50248;
 }
 
-.app.night svg[percent="99"] circle:nth-child(2) {
-  stroke-dashoffset: 4.02124;
+svg[percent="99"] circle:nth-child(2) {
+  stroke-dashoffset: 2.25124;
 }
 
-.app.night svg[percent="100"] circle:nth-child(2) {
+svg[percent="100"] circle:nth-child(2) {
   stroke-dashoffset: 0;
 }
 /*# sourceMappingURL=index.css.map */
