@@ -34,11 +34,20 @@ $snowNight: "../images/night-snow.png";
   background-repeat: no-repeat;
 }
 
-@mixin cycle($clouds, $rain, $clear, $snow) {
-  .Clouds{ @include img($clouds, 155px); }
-  .Rain{ @include img($rain, 155px); }
-  .Clear{ @include img($clear, 155px); }
-  .Snow{ @include img($snow, 155px); }
+@mixin cycle($clouds, $rain, $clear, $snow, $size) {
+  .Clouds{ @include img($clouds, $size); }
+  .Rain{ @include img($rain, $size); }
+  .Clear{ @include img($clear, $size); }
+  .Snow{ @include img($snow, $size); }
+}
+
+.shadow-text{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.282);
+}
+
+.shadow-box{
+  -webkit-box-shadow: 7px 4px 19px 2px #00000010; 
+  box-shadow: 7px 4px 19px 2px #00000010;
 }
 
 .card{
@@ -48,6 +57,23 @@ $snowNight: "../images/night-snow.png";
   border-radius: 24px;
   height: 400px;
   transition: background-color 0.8s ease;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.446) 0%, #ffffff00 100%);
+}
+
+.card.day{
+  background-color: #267cfc;
+  -webkit-box-shadow: 9px 8px 19px 2px #227CD65d; 
+  box-shadow: 9px 8px 19px 2px #227CD65d;
+
+  @include cycle($cloudsDay, $rainDay, $clearDay, $snowDay, 155px);
+}
+
+.card.night{
+  background-color: #3749eb;
+  -webkit-box-shadow: 9px 8px 19px 2px #6422d65d; 
+  box-shadow: 9px 8px 19px 2px #6422d65d;
+  
+  @include cycle($cloudsNight, $rainNight, $clearNight, $snowNight, 155px);
 }
 
 .card-image{
@@ -55,18 +81,6 @@ $snowNight: "../images/night-snow.png";
   top: -50px;
   left: -50px;
 }
-
-.day{
-  background-color: rgb(59, 130, 246);
-  @include cycle($cloudsDay, $rainDay, $clearDay, $snowDay);
-}
-
-.night{
-  background-color: rgb(9, 34, 75);
-  @include cycle($cloudsNight, $rainNight, $clearNight, $snowNight);
-}
-
-
 
 .progress-dot{
   background-color: $text;
@@ -76,6 +90,8 @@ $snowNight: "../images/night-snow.png";
   position: absolute;
   right: 70px;
   bottom: 120px;
+  -webkit-box-shadow: 2px 2px 2px #00000021; 
+  box-shadow: 2px 2px 2px #00000021;
 }
 
 #progress-container{
@@ -89,27 +105,86 @@ svg {
   width: 100px;
   height: 100px;
   circle {
-    fill: none;
-    stroke-width: 7px;
-    &:nth-child(1) {
-      stroke: rgba($text, .2);;
-    }
-    &:nth-child(2) {
-      stroke: $text;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-dasharray: 225.124;
-      stroke-dashoffset: 225.124;
-      transition: all 150ms ease-out;
-    }
+    -webkit-filter: drop-shadow( 3px 3px 2px #00000012);
+  filter: drop-shadow( 3px 3px 2px #00000012);
+
+  fill: none;
+  stroke-width: 7px;
+  &:nth-child(1) {
+    stroke: rgba($text, .2);;
+  }
+  &:nth-child(2) {
+    stroke: $text;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 205;
+    stroke-dashoffset: 205;
+    transition: all 150ms ease-out;
+  }
   }
   @for $i from 1 through 100 {
     &[percent="#{$i}"] {
       circle {
         &:nth-child(2) {
-          stroke-dashoffset: #{225.124 - (225.124 * 	($i/100))};
+          stroke-dashoffset: #{205 - (205 * 	($i/100))};
         }
       }
     }
+  }
+}
+
+.small-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 115px;
+  height: 180px;
+  
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-right: 40px;
+  border-radius: 24px;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.446) 0%, #ffffff00 100%);
+  -webkit-box-shadow: 7px 6px 19px 2px #00000035; 
+  box-shadow: 7px 6px 19px 2px #00000035;
+
+  transition: background-color 0.3s ease;
+}
+
+
+
+.small-card-container.day{
+  @include cycle($cloudsDay, $rainDay, $clearDay, $snowDay, 90px);
+
+  .small-card.active{
+    background-color: #267cfc;
+    color: white;
+  }
+}
+
+.small-card-container.night{
+  @include cycle($cloudsNight, $rainNight, $clearNight, $snowNight, 90px);
+
+  .small-card.active{
+    background-color: #3749eb;
+    color: white;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .slider {
+      background-color: transparent;
+  }
+  .slider:hover {
+      background-color: transparent;
+  }
+  .slider::-webkit-scrollbar {
+      background-color: transparent;
+  }
+  .slider::-webkit-scrollbar-track {
+      display: none;
+  }
+  .slider::-webkit-scrollbar-thumb {
+      background-color: inherit;
   }
 }
