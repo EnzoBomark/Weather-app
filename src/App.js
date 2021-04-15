@@ -1,35 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import Forecast from "./components/Forecast"
+import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
-import Weather from "./components/Weather"
+import CurrentWeather from "./components/CurrentWeather";
 
 function App() {
     const [country, setCountry] = useState(false);
     const [weather, setWeather] = useState(false);
     const [forecast, setForecast] = useState(false);
-    const [unit, setUnit] = useState(true);
 
     const getWeather = (e) => setWeather(e);
 
     const getForecast = (e) => setForecast(e);
 
     const getCountry = (e) => setCountry(e);
-
-    const units = () => setUnit(!unit); 
-
+    
     return (
         <div className='app overflow-x-hidden'>
             <main className="flex flex-col items-center">
-                <SearchBar getWeather={getWeather} getForecast={getForecast} getCountry={getCountry}></SearchBar>
+                <SearchBar getWeather={getWeather} getForecast={getForecast} getCountry={getCountry}/>
 
-                {   country &&
-                    <>
-                        <Weather  weather={weather} country={country} units={units} unit={unit}/>
-
-                        {/* <Forecast forecast={forecast} unit={unit} country={country}/> */}
-                    </>
-                }
-
+                { country && <CurrentWeather  weather={weather} forecast={forecast} country={country}/> }
+                { country == false && <div>Hej</div> }
             </main>
         </div>
     )

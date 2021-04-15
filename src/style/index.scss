@@ -26,6 +26,10 @@ $snowNight: "../images/night-snow.png";
   font-family: 'Nunito', sans-serif;
 }
 
+body{
+  background-color: #FCFCFC;
+}
+
 @mixin img($url, $size) {
   background-image: url($url);
   width: $size;
@@ -42,12 +46,31 @@ $snowNight: "../images/night-snow.png";
 }
 
 .shadow-text{
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.282);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.282);
+}
+
+.shadow-text-large{
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.323);
 }
 
 .shadow-box{
-  -webkit-box-shadow: 7px 4px 19px 2px #00000010; 
-  box-shadow: 7px 4px 19px 2px #00000010;
+  -webkit-box-shadow: 5px 4px 6px #00000006; 
+  box-shadow: 5px 4px 6px #00000006;
+}
+
+.menu{
+  background: #FCFCFC;
+	width: 100vw;
+	height: 120px;
+	position: fixed;
+	z-index: 100;
+	top: -100px;
+	transition: all 0.3s;
+
+  &:hover, &:focus{
+    transform: translate3d(0, 100px, 0);
+    transition: all 0.3s;
+  }
 }
 
 .card{
@@ -57,11 +80,11 @@ $snowNight: "../images/night-snow.png";
   border-radius: 24px;
   height: 400px;
   transition: background-color 0.8s ease;
-  background: linear-gradient(170deg, rgba(255, 255, 255, 0.446) 0%, #ffffff00 100%);
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.576) 0%, #ffffff00 100%);
 }
 
 .card.day{
-  background-color: #267cfc;
+  background-color: #408cff;
   -webkit-box-shadow: 9px 8px 19px 2px #227CD65d; 
   box-shadow: 9px 8px 19px 2px #227CD65d;
 
@@ -69,7 +92,7 @@ $snowNight: "../images/night-snow.png";
 }
 
 .card.night{
-  background-color: #3749eb;
+  background-color: #2f0dac;
   -webkit-box-shadow: 9px 8px 19px 2px #6422d65d; 
   box-shadow: 9px 8px 19px 2px #6422d65d;
   
@@ -82,56 +105,56 @@ $snowNight: "../images/night-snow.png";
   left: -50px;
 }
 
-.progress-dot{
-  background-color: $text;
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  position: absolute;
-  right: 70px;
-  bottom: 120px;
-  -webkit-box-shadow: 2px 2px 2px #00000021; 
-  box-shadow: 2px 2px 2px #00000021;
-}
+// .progress-dot{
+//   background-color: $text;
+//   width: 5px;
+//   height: 5px;
+//   border-radius: 9999px;
+//   position: absolute;
+//   right: 60px;
+//   bottom: 105px;
+//   -webkit-box-shadow: 1px 1px 2px #00000012; 
+//   box-shadow: 1px 1px 2px #00000012;
+// }
 
-#progress-container{
-  transition: all 0.5s ease;
-}
+// #progress-container{
+//   transition: all 0.5s ease;
+// }
 
-svg {
-  transition: all 0.5s ease;
+// svg {
+//   transition: all 0.5s ease;
 
-  display: block;
-  width: 100px;
-  height: 100px;
-  circle {
-    -webkit-filter: drop-shadow( 3px 3px 2px #00000012);
-  filter: drop-shadow( 3px 3px 2px #00000012);
+//   display: block;
+//   width: 100px;
+//   height: 100px;
+//   circle {
+//     -webkit-filter: drop-shadow( 1px 1px 2px #00000012);
+//   filter: drop-shadow( 1px 1px 2px #00000012);
 
-  fill: none;
-  stroke-width: 7px;
-  &:nth-child(1) {
-    stroke: rgba($text, .2);;
-  }
-  &:nth-child(2) {
-    stroke: $text;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 205;
-    stroke-dashoffset: 205;
-    transition: all 150ms ease-out;
-  }
-  }
-  @for $i from 1 through 100 {
-    &[percent="#{$i}"] {
-      circle {
-        &:nth-child(2) {
-          stroke-dashoffset: #{205 - (205 * 	($i/100))};
-        }
-      }
-    }
-  }
-}
+//   fill: none;
+//   stroke-width: 5px;
+//   &:nth-child(1) {
+//     stroke: rgba(white, .2);;
+//   }
+//   &:nth-child(2) {
+//     stroke: white;
+//     stroke-linecap: round;
+//     stroke-linejoin: round;
+//     stroke-dasharray: 210;
+//     stroke-dashoffset: 210;
+//     transition: all 150ms ease-out;
+//   }
+//   }
+//   @for $i from 1 through 100 {
+//     &[percent="#{$i}"] {
+//       circle {
+//         &:nth-child(2) {
+//           stroke-dashoffset: #{210 - (210 * 	($i/100))};
+//         }
+//       }
+//     }
+//   }
+// }
 
 .small-card{
   display: flex;
@@ -144,31 +167,33 @@ svg {
   margin-bottom: 30px;
   margin-right: 40px;
   border-radius: 24px;
-  background: linear-gradient(170deg, rgba(255, 255, 255, 0.446) 0%, #ffffff00 100%);
-  -webkit-box-shadow: 7px 6px 19px 2px #00000035; 
-  box-shadow: 7px 6px 19px 2px #00000035;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.576) 0%, #ffffff00 100%);
+  -webkit-box-shadow: 6px 6px 10px #00000015; 
+  box-shadow: 6px 6px 10px #00000015;
 
   transition: background-color 0.3s ease;
 }
 
-
-
 .small-card-container.day{
-  @include cycle($cloudsDay, $rainDay, $clearDay, $snowDay, 90px);
+  @include cycle($cloudsDay, $rainDay, $clearDay, $snowDay, 70px);
 
   .small-card.active{
-    background-color: #267cfc;
+    background-color: #408cff;
     color: white;
   }
 }
 
 .small-card-container.night{
-  @include cycle($cloudsNight, $rainNight, $clearNight, $snowNight, 90px);
+  @include cycle($cloudsNight, $rainNight, $clearNight, $snowNight, 70px);
 
   .small-card.active{
-    background-color: #3749eb;
+    background-color: #2f0dac;
     color: white;
   }
+}
+
+.slider-content{
+  background-color: #FCFCFC;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {

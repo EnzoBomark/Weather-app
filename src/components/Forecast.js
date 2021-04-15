@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ForecastCard from "./ForecastCard"
+import ForecastCard from "./ForecastCard";
 
 export default function Forecast({ forecast, unit }) {
 

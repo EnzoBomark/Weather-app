@@ -10,13 +10,39 @@
   font-family: 'Nunito', sans-serif;
 }
 
+body {
+  background-color: #FCFCFC;
+}
+
 .shadow-text {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.282);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.282);
+}
+
+.shadow-text-large {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.323);
 }
 
 .shadow-box {
-  -webkit-box-shadow: 7px 4px 19px 2px #00000010;
-  box-shadow: 7px 4px 19px 2px #00000010;
+  -webkit-box-shadow: 5px 4px 6px #00000006;
+  box-shadow: 5px 4px 6px #00000006;
+}
+
+.menu {
+  background: #FCFCFC;
+  width: 100vw;
+  height: 120px;
+  position: fixed;
+  z-index: 100;
+  top: -100px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.menu:hover, .menu:focus {
+  -webkit-transform: translate3d(0, 100px, 0);
+          transform: translate3d(0, 100px, 0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .card {
@@ -27,11 +53,11 @@
   height: 400px;
   -webkit-transition: background-color 0.8s ease;
   transition: background-color 0.8s ease;
-  background: linear-gradient(170deg, rgba(255, 255, 255, 0.446) 0%, #ffffff00 100%);
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.576) 0%, #ffffff00 100%);
 }
 
 .card.day {
-  background-color: #267cfc;
+  background-color: #408cff;
   -webkit-box-shadow: 9px 8px 19px 2px #227CD65d;
   box-shadow: 9px 8px 19px 2px #227CD65d;
 }
@@ -69,7 +95,7 @@
 }
 
 .card.night {
-  background-color: #3749eb;
+  background-color: #2f0dac;
   -webkit-box-shadow: 9px 8px 19px 2px #6422d65d;
   box-shadow: 9px 8px 19px 2px #6422d65d;
 }
@@ -112,452 +138,6 @@
   left: -50px;
 }
 
-.progress-dot {
-  background-color: #ffffff;
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  position: absolute;
-  right: 70px;
-  bottom: 120px;
-  -webkit-box-shadow: 2px 2px 2px #00000021;
-  box-shadow: 2px 2px 2px #00000021;
-}
-
-#progress-container {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-svg {
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  display: block;
-  width: 100px;
-  height: 100px;
-}
-
-svg circle {
-  -webkit-filter: drop-shadow(3px 3px 2px #00000012);
-  filter: drop-shadow(3px 3px 2px #00000012);
-  fill: none;
-  stroke-width: 7px;
-}
-
-svg circle:nth-child(1) {
-  stroke: rgba(255, 255, 255, 0.2);
-}
-
-svg circle:nth-child(2) {
-  stroke: #ffffff;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 205;
-  stroke-dashoffset: 205;
-  -webkit-transition: all 150ms ease-out;
-  transition: all 150ms ease-out;
-}
-
-svg[percent="1"] circle:nth-child(2) {
-  stroke-dashoffset: 202.95;
-}
-
-svg[percent="2"] circle:nth-child(2) {
-  stroke-dashoffset: 200.9;
-}
-
-svg[percent="3"] circle:nth-child(2) {
-  stroke-dashoffset: 198.85;
-}
-
-svg[percent="4"] circle:nth-child(2) {
-  stroke-dashoffset: 196.8;
-}
-
-svg[percent="5"] circle:nth-child(2) {
-  stroke-dashoffset: 194.75;
-}
-
-svg[percent="6"] circle:nth-child(2) {
-  stroke-dashoffset: 192.7;
-}
-
-svg[percent="7"] circle:nth-child(2) {
-  stroke-dashoffset: 190.65;
-}
-
-svg[percent="8"] circle:nth-child(2) {
-  stroke-dashoffset: 188.6;
-}
-
-svg[percent="9"] circle:nth-child(2) {
-  stroke-dashoffset: 186.55;
-}
-
-svg[percent="10"] circle:nth-child(2) {
-  stroke-dashoffset: 184.5;
-}
-
-svg[percent="11"] circle:nth-child(2) {
-  stroke-dashoffset: 182.45;
-}
-
-svg[percent="12"] circle:nth-child(2) {
-  stroke-dashoffset: 180.4;
-}
-
-svg[percent="13"] circle:nth-child(2) {
-  stroke-dashoffset: 178.35;
-}
-
-svg[percent="14"] circle:nth-child(2) {
-  stroke-dashoffset: 176.3;
-}
-
-svg[percent="15"] circle:nth-child(2) {
-  stroke-dashoffset: 174.25;
-}
-
-svg[percent="16"] circle:nth-child(2) {
-  stroke-dashoffset: 172.2;
-}
-
-svg[percent="17"] circle:nth-child(2) {
-  stroke-dashoffset: 170.15;
-}
-
-svg[percent="18"] circle:nth-child(2) {
-  stroke-dashoffset: 168.1;
-}
-
-svg[percent="19"] circle:nth-child(2) {
-  stroke-dashoffset: 166.05;
-}
-
-svg[percent="20"] circle:nth-child(2) {
-  stroke-dashoffset: 164;
-}
-
-svg[percent="21"] circle:nth-child(2) {
-  stroke-dashoffset: 161.95;
-}
-
-svg[percent="22"] circle:nth-child(2) {
-  stroke-dashoffset: 159.9;
-}
-
-svg[percent="23"] circle:nth-child(2) {
-  stroke-dashoffset: 157.85;
-}
-
-svg[percent="24"] circle:nth-child(2) {
-  stroke-dashoffset: 155.8;
-}
-
-svg[percent="25"] circle:nth-child(2) {
-  stroke-dashoffset: 153.75;
-}
-
-svg[percent="26"] circle:nth-child(2) {
-  stroke-dashoffset: 151.7;
-}
-
-svg[percent="27"] circle:nth-child(2) {
-  stroke-dashoffset: 149.65;
-}
-
-svg[percent="28"] circle:nth-child(2) {
-  stroke-dashoffset: 147.6;
-}
-
-svg[percent="29"] circle:nth-child(2) {
-  stroke-dashoffset: 145.55;
-}
-
-svg[percent="30"] circle:nth-child(2) {
-  stroke-dashoffset: 143.5;
-}
-
-svg[percent="31"] circle:nth-child(2) {
-  stroke-dashoffset: 141.45;
-}
-
-svg[percent="32"] circle:nth-child(2) {
-  stroke-dashoffset: 139.4;
-}
-
-svg[percent="33"] circle:nth-child(2) {
-  stroke-dashoffset: 137.35;
-}
-
-svg[percent="34"] circle:nth-child(2) {
-  stroke-dashoffset: 135.3;
-}
-
-svg[percent="35"] circle:nth-child(2) {
-  stroke-dashoffset: 133.25;
-}
-
-svg[percent="36"] circle:nth-child(2) {
-  stroke-dashoffset: 131.2;
-}
-
-svg[percent="37"] circle:nth-child(2) {
-  stroke-dashoffset: 129.15;
-}
-
-svg[percent="38"] circle:nth-child(2) {
-  stroke-dashoffset: 127.1;
-}
-
-svg[percent="39"] circle:nth-child(2) {
-  stroke-dashoffset: 125.05;
-}
-
-svg[percent="40"] circle:nth-child(2) {
-  stroke-dashoffset: 123;
-}
-
-svg[percent="41"] circle:nth-child(2) {
-  stroke-dashoffset: 120.95;
-}
-
-svg[percent="42"] circle:nth-child(2) {
-  stroke-dashoffset: 118.9;
-}
-
-svg[percent="43"] circle:nth-child(2) {
-  stroke-dashoffset: 116.85;
-}
-
-svg[percent="44"] circle:nth-child(2) {
-  stroke-dashoffset: 114.8;
-}
-
-svg[percent="45"] circle:nth-child(2) {
-  stroke-dashoffset: 112.75;
-}
-
-svg[percent="46"] circle:nth-child(2) {
-  stroke-dashoffset: 110.7;
-}
-
-svg[percent="47"] circle:nth-child(2) {
-  stroke-dashoffset: 108.65;
-}
-
-svg[percent="48"] circle:nth-child(2) {
-  stroke-dashoffset: 106.6;
-}
-
-svg[percent="49"] circle:nth-child(2) {
-  stroke-dashoffset: 104.55;
-}
-
-svg[percent="50"] circle:nth-child(2) {
-  stroke-dashoffset: 102.5;
-}
-
-svg[percent="51"] circle:nth-child(2) {
-  stroke-dashoffset: 100.45;
-}
-
-svg[percent="52"] circle:nth-child(2) {
-  stroke-dashoffset: 98.4;
-}
-
-svg[percent="53"] circle:nth-child(2) {
-  stroke-dashoffset: 96.35;
-}
-
-svg[percent="54"] circle:nth-child(2) {
-  stroke-dashoffset: 94.3;
-}
-
-svg[percent="55"] circle:nth-child(2) {
-  stroke-dashoffset: 92.25;
-}
-
-svg[percent="56"] circle:nth-child(2) {
-  stroke-dashoffset: 90.2;
-}
-
-svg[percent="57"] circle:nth-child(2) {
-  stroke-dashoffset: 88.15;
-}
-
-svg[percent="58"] circle:nth-child(2) {
-  stroke-dashoffset: 86.1;
-}
-
-svg[percent="59"] circle:nth-child(2) {
-  stroke-dashoffset: 84.05;
-}
-
-svg[percent="60"] circle:nth-child(2) {
-  stroke-dashoffset: 82;
-}
-
-svg[percent="61"] circle:nth-child(2) {
-  stroke-dashoffset: 79.95;
-}
-
-svg[percent="62"] circle:nth-child(2) {
-  stroke-dashoffset: 77.9;
-}
-
-svg[percent="63"] circle:nth-child(2) {
-  stroke-dashoffset: 75.85;
-}
-
-svg[percent="64"] circle:nth-child(2) {
-  stroke-dashoffset: 73.8;
-}
-
-svg[percent="65"] circle:nth-child(2) {
-  stroke-dashoffset: 71.75;
-}
-
-svg[percent="66"] circle:nth-child(2) {
-  stroke-dashoffset: 69.7;
-}
-
-svg[percent="67"] circle:nth-child(2) {
-  stroke-dashoffset: 67.65;
-}
-
-svg[percent="68"] circle:nth-child(2) {
-  stroke-dashoffset: 65.6;
-}
-
-svg[percent="69"] circle:nth-child(2) {
-  stroke-dashoffset: 63.55;
-}
-
-svg[percent="70"] circle:nth-child(2) {
-  stroke-dashoffset: 61.5;
-}
-
-svg[percent="71"] circle:nth-child(2) {
-  stroke-dashoffset: 59.45;
-}
-
-svg[percent="72"] circle:nth-child(2) {
-  stroke-dashoffset: 57.4;
-}
-
-svg[percent="73"] circle:nth-child(2) {
-  stroke-dashoffset: 55.35;
-}
-
-svg[percent="74"] circle:nth-child(2) {
-  stroke-dashoffset: 53.3;
-}
-
-svg[percent="75"] circle:nth-child(2) {
-  stroke-dashoffset: 51.25;
-}
-
-svg[percent="76"] circle:nth-child(2) {
-  stroke-dashoffset: 49.2;
-}
-
-svg[percent="77"] circle:nth-child(2) {
-  stroke-dashoffset: 47.15;
-}
-
-svg[percent="78"] circle:nth-child(2) {
-  stroke-dashoffset: 45.1;
-}
-
-svg[percent="79"] circle:nth-child(2) {
-  stroke-dashoffset: 43.05;
-}
-
-svg[percent="80"] circle:nth-child(2) {
-  stroke-dashoffset: 41;
-}
-
-svg[percent="81"] circle:nth-child(2) {
-  stroke-dashoffset: 38.95;
-}
-
-svg[percent="82"] circle:nth-child(2) {
-  stroke-dashoffset: 36.9;
-}
-
-svg[percent="83"] circle:nth-child(2) {
-  stroke-dashoffset: 34.85;
-}
-
-svg[percent="84"] circle:nth-child(2) {
-  stroke-dashoffset: 32.8;
-}
-
-svg[percent="85"] circle:nth-child(2) {
-  stroke-dashoffset: 30.75;
-}
-
-svg[percent="86"] circle:nth-child(2) {
-  stroke-dashoffset: 28.7;
-}
-
-svg[percent="87"] circle:nth-child(2) {
-  stroke-dashoffset: 26.65;
-}
-
-svg[percent="88"] circle:nth-child(2) {
-  stroke-dashoffset: 24.6;
-}
-
-svg[percent="89"] circle:nth-child(2) {
-  stroke-dashoffset: 22.55;
-}
-
-svg[percent="90"] circle:nth-child(2) {
-  stroke-dashoffset: 20.5;
-}
-
-svg[percent="91"] circle:nth-child(2) {
-  stroke-dashoffset: 18.45;
-}
-
-svg[percent="92"] circle:nth-child(2) {
-  stroke-dashoffset: 16.4;
-}
-
-svg[percent="93"] circle:nth-child(2) {
-  stroke-dashoffset: 14.35;
-}
-
-svg[percent="94"] circle:nth-child(2) {
-  stroke-dashoffset: 12.3;
-}
-
-svg[percent="95"] circle:nth-child(2) {
-  stroke-dashoffset: 10.25;
-}
-
-svg[percent="96"] circle:nth-child(2) {
-  stroke-dashoffset: 8.2;
-}
-
-svg[percent="97"] circle:nth-child(2) {
-  stroke-dashoffset: 6.15;
-}
-
-svg[percent="98"] circle:nth-child(2) {
-  stroke-dashoffset: 4.1;
-}
-
-svg[percent="99"] circle:nth-child(2) {
-  stroke-dashoffset: 2.05;
-}
-
-svg[percent="100"] circle:nth-child(2) {
-  stroke-dashoffset: 0;
-}
-
 .small-card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -575,85 +155,89 @@ svg[percent="100"] circle:nth-child(2) {
   margin-bottom: 30px;
   margin-right: 40px;
   border-radius: 24px;
-  background: linear-gradient(170deg, rgba(255, 255, 255, 0.446) 0%, #ffffff00 100%);
-  -webkit-box-shadow: 7px 6px 19px 2px #00000035;
-  box-shadow: 7px 6px 19px 2px #00000035;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.576) 0%, #ffffff00 100%);
+  -webkit-box-shadow: 6px 6px 10px #00000015;
+  box-shadow: 6px 6px 10px #00000015;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
 
 .small-card-container.day .Clouds {
   background-image: url("../images/cloud.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.day .Rain {
   background-image: url("../images/rain.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.day .Clear {
   background-image: url("../images/sun.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.day .Snow {
   background-image: url("../images/snow.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.day .small-card.active {
-  background-color: #267cfc;
+  background-color: #408cff;
   color: white;
 }
 
 .small-card-container.night .Clouds {
   background-image: url("../images/night-cloud.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.night .Rain {
   background-image: url("../images/night-rain.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.night .Clear {
   background-image: url("../images/night-moon.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.night .Snow {
   background-image: url("../images/night-snow.png");
-  width: 90px;
-  height: 90px;
-  background-size: 90px;
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
   background-repeat: no-repeat;
 }
 
 .small-card-container.night .small-card.active {
-  background-color: #3749eb;
+  background-color: #2f0dac;
   color: white;
+}
+
+.slider-content {
+  background-color: #FCFCFC;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {

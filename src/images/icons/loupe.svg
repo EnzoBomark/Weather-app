@@ -1,43 +1,14 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 513.28 513.28" style="enable-background:new 0 0 513.28 513.28;" xml:space="preserve">
-<g>
-	<g>
-		<path d="M495.04,404.48L410.56,320c15.36-30.72,25.6-66.56,25.6-102.4C436.16,97.28,338.88,0,218.56,0S0.96,97.28,0.96,217.6
-			s97.28,217.6,217.6,217.6c35.84,0,71.68-10.24,102.4-25.6l84.48,84.48c25.6,25.6,64,25.6,89.6,0
-			C518.08,468.48,518.08,430.08,495.04,404.48z M218.56,384c-92.16,0-166.4-74.24-166.4-166.4S126.4,51.2,218.56,51.2
-			s166.4,74.24,166.4,166.4S310.72,384,218.56,384z"/>
-	</g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.854" height="39.936" viewBox="0 0 39.854 39.936">
+  <defs>
+    <filter id="loupe" x="0" y="0" width="39.854" height="39.936" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.157"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#loupe)">
+    <path id="loupe-2" data-name="loupe" d="M22.076,17.286l-3.61-3.61A9.96,9.96,0,0,0,19.559,9.3a9.3,9.3,0,1,0-9.3,9.3,9.96,9.96,0,0,0,4.376-1.094l3.61,3.61a2.644,2.644,0,0,0,3.829,0A2.851,2.851,0,0,0,22.076,17.286ZM10.26,16.411A7.112,7.112,0,1,1,17.371,9.3,7.1,7.1,0,0,1,10.26,16.411Z" transform="translate(8.04 6)" fill="#10152a"/>
+  </g>
 </svg>
